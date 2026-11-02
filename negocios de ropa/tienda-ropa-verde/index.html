@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nombre de la tienda | Tienda de Ropa & Catálogo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons via CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Barra de Aviso Superior -->
+  <div class="top-announcement">
+    <p><i class="fa-solid fa-sparkles"></i> <strong>Nueva Colección:</strong> Envíos a todo el país • Compra fácil y
+      directa por WhatsApp</p>
+  </div>
+
+  <!-- Header / Barra de Navegación -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="#">
+          <span class="logo-leaf"><i class="fa-solid fa-leaf"></i></span>
+          <span class="logo-text">nombre de la <em>tienda</em></span>
+        </a>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#catalogo" class="nav-link active">Catálogo</a>
+        <a href="#coleccion" class="nav-link">Colección Verde</a>
+        <a href="#como-comprar" class="nav-link">¿Cómo Comprar?</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Botón Carrito -->
+        <button id="cartBtn" class="cart-trigger-btn" aria-label="Ver Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-label">Carrito</span>
+          <span id="cartCountBadge" class="cart-badge">0</span>
+        </button>
+
+        <!-- Botón Contacto Rápido WhatsApp -->
+        <a id="headerWaLink" href="#" target="_blank" class="btn-header-wa">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Atención Directa</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-section" id="coleccion">
+    <div class="hero-content">
+      <span class="hero-pill"><i class="fa-solid fa-seedling"></i> Moda Consciente & Elegante</span>
+      <h1 class="hero-title">"frase que quiera poner la tienda"</h1>
+      <p class="hero-subtitle">"otra frase que quiera poner la tienda"</p>
+      <div class="hero-buttons">
+        <a href="#catalogo" class="btn-primary">Explorar Catálogo <i class="fa-solid fa-arrow-down"></i></a>
+        <a id="heroWaBtn" href="#" target="_blank" class="btn-secondary-wa">
+          <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Catálogo -->
+  <main class="catalog-section" id="catalogo">
+    <div class="section-container">
+
+      <!-- Título de Sección -->
+      <div class="section-header">
+        <div>
+          <span class="section-tag">Colección Exclusiva</span>
+          <h2 class="section-title">Nuestro Catálogo Destacado</h2>
+        </div>
+        <p class="section-description">
+          Elige tu prenda favorita, selecciona tu talla y escríbenos directamente a WhatsApp para apartarla o recibirla
+          en tu puerta.
+        </p>
+      </div>
+
+      <!-- Barra de Filtros y Búsqueda -->
+      <div class="filters-bar">
+        <!-- Buscador -->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Buscar por nombre (ej. vestido, camisa, lino)...">
+          <button id="clearSearchBtn" class="clear-search-btn" title="Limpiar búsqueda"><i
+              class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <!-- Ordenador -->
+        <div class="sort-box">
+          <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Ordenar:</label>
+          <select id="sortSelect">
+            <option value="default">Recomendados</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+            <option value="name-asc">Nombre (A - Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Categorías como Píldoras -->
+      <div class="categories-bar">
+        <button class="filter-chip active" data-category="all">
+          <i class="fa-solid fa-border-all"></i> Todos (<span id="count-all">5</span>)
+        </button>
+        <button class="filter-chip" data-category="Vestidos">
+          <i class="fa-solid fa-person-dress"></i> Vestidos
+        </button>
+        <button class="filter-chip" data-category="Camisas & Tops">
+          <i class="fa-solid fa-shirt"></i> Camisas & Tops
+        </button>
+        <button class="filter-chip" data-category="Pantalones">
+          <i class="fa-solid fa-vest-patches"></i> Pantalones
+        </button>
+        <button class="filter-chip" data-category="Abrigos">
+          <i class="fa-solid fa-vest"></i> Abrigos & Blazers
+        </button>
+        <button class="filter-chip" data-category="Accesorios">
+          <i class="fa-solid fa-bag-shopping"></i> Accesorios
+        </button>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="productsGrid" class="products-grid">
+        <!-- Se llena dinámicamente con JavaScript -->
+      </div>
+
+      <!-- Mensaje cuando no hay resultados de búsqueda -->
+      <div id="noResultsMessage" class="no-results hidden">
+        <div class="no-results-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>No encontramos prendas con ese criterio</h3>
+        <p>Prueba buscando con otra palabra o restablece los filtros.</p>
+        <button id="resetFiltersBtn" class="btn-primary-small">Restablecer filtros</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Sección: ¿Cómo Funciona la Compra por WhatsApp? -->
+  <section class="how-it-works" id="como-comprar">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Fácil y Sin Complicaciones</span>
+        <h2 class="section-title">¿Cómo comprar en nuestra tienda?</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="fa-solid fa-hand-pointer"></i></div>
+          <h3>Elige tu Prenda</h3>
+          <p>Explora el catálogo, revisa fotos, precios y selecciona tu talla preferida.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <h3>Haz Clic en WhatsApp</h3>
+          <p>Presiona el botón de compra o envía tu carrito. El mensaje se redacta automáticamente.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <h3>Confirmas y Recibes</h3>
+          <p>Te responderemos de inmediato para coordinar el método de pago y el envío a tu domicilio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner de Asesoría Personalizada -->
+  <section class="cta-banner" id="contacto">
+    <div class="cta-card">
+      <div class="cta-text">
+        <h2>¿Necesitas asesoría con tu talla o estilo?</h2>
+        <p>Escríbenos en WhatsApp y una asesora de modas te atenderá en tiempo real.</p>
+      </div>
+      <a id="consultantWaBtn" href="#" target="_blank" class="btn-whatsapp-large">
+        <i class="fa-brands fa-whatsapp"></i> Chatear con una Asesora
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo">
+          <span class="logo-leaf"><i class="fa-solid fa-leaf"></i></span>
+          <span class="logo-text">VERDE <em>BOTÁNICA</em></span>
+        </div>
+        <p class="footer-about">Diseño textil contemporáneo inspirado en los matices botánicos. Moda ética, duradera y
+          de alta calidad.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a id="footerWaIcon" href="#" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#catalogo">Catálogo Completo</a></li>
+          <li><a href="#coleccion">Colección Verde</a></li>
+          <li><a href="#como-comprar">Guía de Compra</a></li>
+          <li><a href="#contacto">Atención al Cliente</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Beneficios</h4>
+        <ul>
+          <li><i class="fa-solid fa-shield-check"></i> Pagos 100% seguros</li>
+          <li><i class="fa-solid fa-rotate-left"></i> Cambios de talla sin costo</li>
+          <li><i class="fa-solid fa-truck"></i> Envíos nacionales</li>
+          <li><i class="fa-solid fa-comments"></i> Atención personalizada</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto Directo</h4>
+        <p class="footer-contact-item"><i class="fa-solid fa-phone"></i> <span id="displayPhone">+591 "el numero de
+            celular"</span></p>
+        <p class="footer-contact-item"><i class="fa-solid fa-location-dot"></i> Tienda Online • Envíos a todo el país
+        </p>
+        <p class="footer-contact-item"><i class="fa-solid fa-clock"></i> "aqui agregan los dias de atencion y horarios"
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; nombre de la tienda. Plantilla Demo diseñada para desmostracion.</p>
+    </div>
+  </footer>
+
+  <!-- Modal de Vista Rápida (Quick View) -->
+  <div id="quickViewModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button id="closeModalBtn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-body" id="modalProductDetails">
+        <!-- Contenido inyectado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrito Lateral (Drawer) -->
+  <div id="cartDrawerOverlay" class="drawer-overlay hidden">
+    <aside class="cart-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <h3>Bolsa de Compras</h3>
+          <span id="drawerItemsCount" class="drawer-badge">0</span>
+        </div>
+        <button id="closeDrawerBtn" class="drawer-close-btn" aria-label="Cerrar carrito">&times;</button>
+      </div>
+
+      <div class="drawer-body" id="cartItemsList">
+        <!-- Ítems del carrito inyectados dinámicamente -->
+      </div>
+
+      <div class="drawer-footer" id="drawerFooter">
+        <div class="drawer-subtotal">
+          <span>Total Estimado:</span>
+          <span id="cartTotalDisplay" class="total-amount">$0</span>
+        </div>
+        <p class="drawer-note"><i class="fa-solid fa-circle-info"></i> Al continuar, se abrirá WhatsApp con el detalle
+          completo de tus productos para coordinar pago y entrega.</p>
+        <button id="checkoutWhatsAppBtn" class="btn-checkout-wa">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Pedido por WhatsApp
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <div class="floating-wa-container">
+    <div class="wa-tooltip">
+      <span>¿Deseas atención inmediata? <strong>¡Escríbenos!</strong></span>
+    </div>
+    <a id="floatingWaBtn" href="#" target="_blank" class="floating-wa-btn" aria-label="Chatear por WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="pulsing-ring"></span>
+    </a>
+  </div>
+
+  <!-- Toast Notification (Añadido al carrito) -->
+  <div id="toastNotification" class="toast-notification hidden">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Prenda agregada a tu bolsa</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+
+</html>

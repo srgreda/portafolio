@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SALVA • Tienda de Ropa | Tarija, Bolivia</title>
+  <meta name="description"
+    content="Tienda de ropa urbana contemporánea en blanco y negro en Tarija, Bolivia. Catálogo, pedidos por WhatsApp y ubicación." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            salva: {
+              black: '#000000',
+              white: '#ffffff',
+              dark: '#0a0a0a',
+              gray: '#666666',
+              light: '#f5f5f5',
+              border: '#e5e5e5'
+            }
+          },
+          fontFamily: {
+            heading: ['Syne', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Estilos Propios -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-white text-black antialiased selection:bg-black selection:text-white flex flex-col min-h-screen">
+
+  <!-- BARRA SUPERIOR DE ANUNCIOS -->
+  <div class="bg-black text-white text-[11px] font-semibold py-2 px-4 border-b border-neutral-800">
+    <div
+      class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>📍 TIENDA FÍSICA EN TARIJA • CALLE INGAVI #482 (CENTRO HISTÓRICO)</span>
+      </div>
+      <div class="flex items-center gap-4 text-[10px] tracking-wider uppercase">
+        <a href="https://wa.me/59178234567" target="_blank"
+          class="hover:underline flex items-center gap-1 text-emerald-400">
+          <i data-lucide="message-circle" class="w-3 h-3"></i> WhatsApp: 78234567
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR PRINCIPAL -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-black/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Logo SALVA -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div
+          class="bg-black text-white px-3 py-1 font-heading text-2xl font-black tracking-tighter transition-transform group-hover:scale-105">
+          SALVA
+        </div>
+        <div
+          class="hidden sm:flex flex-col text-[9px] uppercase tracking-widest font-bold leading-tight border-l border-black/20 pl-2">
+          <span>Estudio & Ropa</span>
+          <span class="text-gray-500">Tarija, BO</span>
+        </div>
+      </a>
+
+      <!-- Menú de Navegación -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
+        <a href="#catalogo" class="text-black hover:opacity-60 transition">Catálogo</a>
+        <a href="#croquis" class="text-black hover:opacity-60 transition">Croquis & Ubicación</a>
+        <a href="#redes" class="text-black hover:opacity-60 transition">Redes Sociales</a>
+        <a href="#contacto" class="text-black hover:opacity-60 transition">Contacto</a>
+      </nav>
+
+      <!-- Iconos y Acciones -->
+      <div class="flex items-center gap-3">
+        <!-- Redes directas en header -->
+        <div class="hidden lg:flex items-center gap-2 border-r border-gray-200 pr-3 mr-1">
+          <a href="https://www.instagram.com/salva.tarija" target="_blank" rel="noopener"
+            class="p-2 text-black hover:bg-neutral-100 transition rounded-full" title="Instagram">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+          <a href="https://www.tiktok.com/@salva_bo" target="_blank" rel="noopener"
+            class="p-2 text-black hover:bg-neutral-100 transition rounded-full" title="TikTok">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/salva.clothing" target="_blank" rel="noopener"
+            class="p-2 text-black hover:bg-neutral-100 transition rounded-full" title="Facebook">
+            <i data-lucide="facebook" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Botón Contactar WhatsApp Header -->
+        <a href="https://wa.me/59178234567?text=Hola%20SALVA,%20quisiera%20más%20información%20sobre%20sus%20prendas"
+          target="_blank"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white hover:bg-neutral-800 transition">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>Pedir info</span>
+        </a>
+
+        <!-- Botón Carrito -->
+        <button onclick="toggleCart()"
+          class="relative p-2.5 bg-neutral-100 hover:bg-black hover:text-white transition duration-200"
+          title="Ver carrito">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cartCountBadge" style="display: none;"
+            class="absolute -top-1.5 -right-1.5 bg-black text-white text-[10px] font-black w-5 h-5 rounded-full border-2 border-white flex items-center justify-center">
+            0
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-black text-white py-20 md:py-28 overflow-hidden border-b border-black">
+    <div
+      class="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]">
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div
+          class="inline-flex items-center gap-2 border border-white/20 px-3 py-1 text-[11px] uppercase tracking-widest font-bold mb-6 text-neutral-300">
+          <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+          COLECCIÓN 2026 • PALETA MONOCROMÁTICA
+        </div>
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black font-heading tracking-tighter uppercase leading-[0.95]">
+          MODA URBANA.<br />
+          <span class="text-neutral-400">MINIMALISMO PURO.</span>
+        </h1>
+        <p class="text-sm sm:text-base text-neutral-300 mt-6 leading-relaxed max-w-xl font-normal">
+          Diseñado para quienes aprecian la sobriedad, la estructura y los cortes holgados. Conoce las 5 piezas
+          esenciales de la temporada en Tarija.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#catalogo"
+            class="px-6 py-3.5 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition">
+            Ver Prendas & Filtros
+          </a>
+          <a href="#croquis"
+            class="px-6 py-3.5 border border-white text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition">
+            Ver Croquis en Tarija
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CATÁLOGO CON FILTROS -->
+  <section id="catalogo" class="py-16 md:py-20 bg-neutral-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Título de Sección -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-black/10 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Catálogo Oficial</span>
+          <h2 class="text-3xl sm:text-4xl font-black font-heading tracking-tight uppercase mt-1">Prendas de Muestra</h2>
+        </div>
+        <p class="text-xs text-gray-600 max-w-md">
+          Haz clic en cualquier prenda para ver su detalle en alta resolución o consulta directamente por WhatsApp para
+          apartar tu talla.
+        </p>
+      </div>
+
+      <!-- BARRA DE CONTROLES: FILTROS + BÚSQUEDA + ORDEN -->
+      <div
+        class="bg-white p-4 sm:p-5 border border-gray-200 shadow-sm mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+
+        <!-- Botones de Filtro por Categoría -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none" id="categoryFilters">
+          <button data-category="todas"
+            class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white border border-black transition whitespace-nowrap">
+            Todas (5)
+          </button>
+          <button data-category="remeras"
+            class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-white text-black border border-gray-300 hover:border-black transition whitespace-nowrap">
+            Poleras / Remeras
+          </button>
+          <button data-category="pantalones"
+            class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-white text-black border border-gray-300 hover:border-black transition whitespace-nowrap">
+            Pantalones
+          </button>
+          <button data-category="chaquetas"
+            class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-white text-black border border-gray-300 hover:border-black transition whitespace-nowrap">
+            Chaquetas & Hoodies
+          </button>
+          <button data-category="accesorios"
+            class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-white text-black border border-gray-300 hover:border-black transition whitespace-nowrap">
+            Accesorios
+          </button>
+        </div>
+
+        <!-- Búsqueda y Ordenamiento -->
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <!-- Input de Búsqueda -->
+          <div class="relative w-full sm:w-56">
+            <input type="text" id="searchInput" placeholder="Buscar prenda..."
+              class="w-full pl-8 pr-3 py-2 text-xs border border-gray-300 focus:outline-none focus:border-black transition" />
+            <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+
+          <!-- Selector de Orden -->
+          <div class="relative w-full sm:w-48">
+            <select id="sortSelect"
+              class="w-full py-2 px-3 text-xs border border-gray-300 bg-white focus:outline-none focus:border-black transition">
+              <option value="default">Ordenar: Destacados</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="name-asc">Nombre: A - Z</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Resumen de Resultados -->
+      <div class="flex items-center justify-between text-xs text-gray-500 mb-6 px-1">
+        <span>Mostrando: <strong id="productCount" class="text-black font-bold">5 prendas</strong></span>
+        <span class="text-[11px] uppercase tracking-wider text-neutral-400">Moneda: Bolivianos (Bs.)</span>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BANNER DE COMPRA RÁPIDA POR WHATSAPP -->
+  <section class="bg-black text-white py-10 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-white text-black flex items-center justify-center font-heading text-xl font-bold">
+          S
+        </div>
+        <div>
+          <h3 class="text-lg font-bold font-heading uppercase tracking-wide">¿Tienes dudas con tu talla o modelo?</h3>
+          <p class="text-xs text-neutral-400">Escríbenos directamente a nuestro asesor de ventas en Tarija.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/59178234567?text=Hola%20SALVA,%20quiero%20hacer%20una%20consulta%20general"
+          target="_blank"
+          class="px-5 py-3 bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-neutral-200 transition flex items-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>WhatsApp Asistencia</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CROQUIS Y UBICACIÓN EN TARIJA -->
+  <section id="croquis" class="py-16 md:py-24 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Tienda Física & Ubicación</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading tracking-tight uppercase mt-1">Croquis de Dirección •
+          Tarija</h2>
+        <p class="text-sm text-gray-600 mt-2">
+          Encuentra nuestra tienda en pleno corazón de Tarija. Puedes guiarte con el croquis esquemático o con el mapa
+          interactivo en vivo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- CROQUIS ESQUEMÁTICO ILUSTRADO (6 Columnas) -->
+        <div class="lg:col-span-6 bg-white border-2 border-black p-6 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-gray-200">
+              <div class="flex items-center gap-2">
+                <i data-lucide="map" class="w-5 h-5 text-black"></i>
+                <h3 class="text-sm font-black uppercase tracking-wider">Croquis Esquemático de Referencia</h3>
+              </div>
+              <span class="text-[10px] bg-black text-white px-2 py-0.5 font-bold uppercase">Zona Centro</span>
+            </div>
+
+            <!-- Representación Gráfica SVG del Croquis Urbano de Tarija -->
+            <div class="croquis-grid border border-gray-300 p-4 relative overflow-hidden rounded">
+              <svg viewBox="0 0 600 400" class="w-full h-auto select-none font-sans" xmlns="http://www.w3.org/2000/svg">
+                <!-- Fondo cuadras -->
+                <rect width="600" height="400" fill="#fcfcfc" />
+
+                <!-- Bloques de Manzanas (Gris claro) -->
+                <rect x="30" y="30" width="140" height="100" fill="#eeeeee" stroke="#dddddd" stroke-width="1.5" />
+                <rect x="230" y="30" width="140" height="100" fill="#eeeeee" stroke="#dddddd" stroke-width="1.5" />
+                <rect x="430" y="30" width="140" height="100" fill="#eeeeee" stroke="#dddddd" stroke-width="1.5" />
+
+                <!-- Manzana Plaza Luis de Fuentes (Centro) -->
+                <rect x="30" y="190" width="140" height="160" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5" />
+                <text x="100" y="260" font-size="11" font-weight="bold" text-anchor="middle" fill="#475569">PLAZA
+                  PRINCIPAL</text>
+                <text x="100" y="278" font-size="9" text-anchor="middle" fill="#64748b">Luis de Fuentes y Vargas</text>
+                <!-- Kiosko / Fuente centro plaza -->
+                <circle cx="100" cy="225" r="12" fill="#94a3b8" />
+
+                <!-- Manzana Tienda SALVA -->
+                <rect x="230" y="190" width="140" height="160" fill="#ffffff" stroke="#000000" stroke-width="2" />
+
+                <!-- Local SALVA Marcado en la Manzana -->
+                <rect x="230" y="190" width="65" height="45" fill="#000000" />
+                <text x="262" y="215" font-size="11" font-weight="900" text-anchor="middle" fill="#ffffff"
+                  font-family="'Syne', sans-serif">SALVA</text>
+                <text x="262" y="228" font-size="7" font-weight="bold" text-anchor="middle" fill="#a3a3a3">INGAVI
+                  #482</text>
+
+                <!-- Manzana Catedral / Derecha -->
+                <rect x="430" y="190" width="140" height="160" fill="#eeeeee" stroke="#dddddd" stroke-width="1.5" />
+                <text x="500" y="270" font-size="11" font-weight="bold" text-anchor="middle"
+                  fill="#666666">CATEDRAL</text>
+                <text x="500" y="285" font-size="9" text-anchor="middle" fill="#888888">DE TARIJA</text>
+
+                <!-- Calles Horizontales -->
+                <!-- Calle Madrid (Arriba) -->
+                <rect x="0" y="130" width="600" height="60" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                <text x="300" y="165" font-size="11" font-weight="bold" letter-spacing="3" text-anchor="middle"
+                  fill="#64748b">CALLE MADRID &rarr;</text>
+
+                <!-- Calles Verticales -->
+                <!-- Calle Sucre -->
+                <rect x="170" y="0" width="60" height="400" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                <text x="200" y="100" font-size="11" font-weight="bold" letter-spacing="3" text-anchor="middle"
+                  fill="#64748b" transform="rotate(-90 200 100)">CALLE SUCRE &uarr;</text>
+
+                <!-- Calle Daniel Campos -->
+                <rect x="370" y="0" width="60" height="400" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                <text x="400" y="100" font-size="11" font-weight="bold" letter-spacing="3" text-anchor="middle"
+                  fill="#64748b" transform="rotate(-90 400 100)">CALLE DANIEL CAMPOS &uarr;</text>
+
+                <!-- Calle Ingavi (Frente a la tienda SALVA) -->
+                <!-- Superpuesta entre las manzanas -->
+                <text x="300" y="375" font-size="11" font-weight="bold" letter-spacing="3" text-anchor="middle"
+                  fill="#1e293b">&larr; CALLE INGAVI &larr;</text>
+
+                <!-- Marcador Pin de SALVA -->
+                <circle cx="262" cy="190" r="16" fill="#000000" stroke="#ffffff" stroke-width="3" />
+                <text x="262" y="195" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff">★</text>
+
+                <!-- Indicador 'Tú estás aquí / Destino' -->
+                <rect x="200" y="145" width="124" height="22" fill="#000000" rx="3" />
+                <text x="262" y="160" font-size="9" font-weight="bold" text-anchor="middle" fill="#ffffff">AQUÍ ESTÁ
+                  SALVA</text>
+              </svg>
+            </div>
+
+            <!-- Leyenda y Pasos de Llegada -->
+            <div class="mt-4 bg-neutral-50 p-3.5 border border-gray-200">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-black flex items-center gap-1.5 mb-2">
+                <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+                <span>Instrucciones de llegada a pie:</span>
+              </h4>
+              <ul class="text-xs text-gray-700 space-y-1.5">
+                <li>• <strong>Desde la Plaza Principal:</strong> Camina 1 cuadra hacia el este por Calle Sucre hasta la
+                  esquina de Calle Ingavi.</li>
+                <li>• <strong>Ubicación exacta:</strong> Calle Ingavi #482 (acera norte), a media cuadra antes de llegar
+                  a la Daniel Campos.</li>
+                <li>• Fachada minimalista color blanco y negro con el rótulo en relieve <strong>"SALVA"</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-gray-200 flex flex-wrap gap-2">
+            <a href="https://maps.google.com/?q=-21.5348,-64.7302" target="_blank"
+              class="px-4 py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider hover:bg-neutral-800 transition flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span>Abrir en Google Maps</span>
+            </a>
+            <a href="https://wa.me/59178234567?text=Hola%20SALVA,%20estoy%20en%20el%20centro%20de%20Tarija,%20¿cómo%20llego%20a%20su%20tienda?"
+              target="_blank"
+              class="px-4 py-2.5 border border-black text-black text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition flex items-center gap-2">
+              <i data-lucide="help-circle" class="w-4 h-4"></i>
+              <span>Preguntar cómo llegar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- MAPA INTERACTIVO LEAFLET + TARJETA DE INFORMACIÓN (6 Columnas) -->
+        <div class="lg:col-span-6 flex flex-col gap-6">
+
+          <!-- Contenedor del Mapa Leaflet -->
+          <div class="border-2 border-black overflow-hidden shadow-lg">
+            <div
+              class="bg-black text-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider flex items-center justify-between">
+              <span class="flex items-center gap-2">
+                <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                Mapa Interactivo (Tarija Centro)
+              </span>
+              <span class="text-[10px] text-neutral-400">Desplaza & Zoom</span>
+            </div>
+            <!-- Mapa Leaflet -->
+            <div id="tarijaMap" class="w-full h-72 sm:h-80 z-0"></div>
+          </div>
+
+          <!-- Tarjeta de Horarios y Contacto en Tienda -->
+          <div class="bg-neutral-50 border border-gray-300 p-6">
+            <h3 class="text-base font-black font-heading uppercase text-black tracking-tight mb-4">Datos de Atención en
+              Tarija</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-black mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <strong class="block text-black uppercase">Dirección Física:</strong>
+                  <span class="text-gray-600">Calle Ingavi #482 (entre Sucre y Daniel Campos), Tarija, Bolivia</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="clock" class="w-4 h-4 text-black mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <strong class="block text-black uppercase">Horarios de Tienda:</strong>
+                  <span class="text-gray-600">Lun a Sáb: 09:30 - 13:00<br />Tardes: 15:30 - 20:30</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="message-circle" class="w-4 h-4 text-black mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <strong class="block text-black uppercase">WhatsApp Oficial:</strong>
+                  <a href="https://wa.me/59178234567" target="_blank" class="text-black font-bold hover:underline">+591
+                    78234567</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Métodos de Pago Aceptados -->
+            <div class="mt-6 pt-4 border-t border-gray-200">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 block mb-2">Formas de Pago en
+                Tienda y Envíos:</span>
+              <div class="flex flex-wrap gap-2 text-[11px] font-semibold text-black">
+                <span class="px-2.5 py-1 bg-white border border-gray-300">Pago QR Simple</span>
+                <span class="px-2.5 py-1 bg-white border border-gray-300">Efectivo (Bs.)</span>
+                <span class="px-2.5 py-1 bg-white border border-gray-300">Transferencia Bancaria</span>
+                <span class="px-2.5 py-1 bg-white border border-gray-300">Envíos a Provincias y Todo Bolivia</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN REDES SOCIALES (TIK TOK, INSTAGRAM, FACEBOOK) -->
+  <section id="redes" class="py-16 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-neutral-400">Comunidad SALVA</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading tracking-tight uppercase mt-1">Conecta en Redes Sociales
+        </h2>
+        <p class="text-xs text-neutral-400 mt-2">
+          Mira los lookbooks en video, lanzamientos semanales y reseñas de nuestros clientes en Tarija.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@salva_bo" target="_blank" rel="noopener noreferrer"
+          class="group bg-neutral-800 border border-neutral-700 hover:border-white p-6 transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                </svg>
+              </div>
+              <span
+                class="text-[10px] uppercase font-bold tracking-wider text-neutral-400 group-hover:text-white transition">Videos
+                & Outfits &rarr;</span>
+            </div>
+            <h3 class="text-xl font-bold font-heading">TikTok</h3>
+            <p class="text-xs text-neutral-400 mt-1">@salva_bo</p>
+            <p class="text-xs text-neutral-300 mt-3">Pruebas de calce en video, combinaciones con prendas monocromo y
+              tendencias urbanas.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-neutral-700 text-xs font-bold uppercase tracking-wider text-white">
+            Seguir en TikTok
+          </div>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/salva.tarija" target="_blank" rel="noopener noreferrer"
+          class="group bg-neutral-800 border border-neutral-700 hover:border-white p-6 transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </div>
+              <span
+                class="text-[10px] uppercase font-bold tracking-wider text-neutral-400 group-hover:text-white transition">Lookbooks
+                & Stories &rarr;</span>
+            </div>
+            <h3 class="text-xl font-bold font-heading">Instagram</h3>
+            <p class="text-xs text-neutral-400 mt-1">@salva.tarija</p>
+            <p class="text-xs text-neutral-300 mt-3">Catálogo fotográfico en alta definición, disponibilidad de stock
+              por tallas y menciones de clientes.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-neutral-700 text-xs font-bold uppercase tracking-wider text-white">
+            Seguir en Instagram
+          </div>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/salva.clothing" target="_blank" rel="noopener noreferrer"
+          class="group bg-neutral-800 border border-neutral-700 hover:border-white p-6 transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center">
+                <i data-lucide="facebook" class="w-5 h-5"></i>
+              </div>
+              <span
+                class="text-[10px] uppercase font-bold tracking-wider text-neutral-400 group-hover:text-white transition">Noticias
+                & Eventos &rarr;</span>
+            </div>
+            <h3 class="text-xl font-bold font-heading">Facebook</h3>
+            <p class="text-xs text-neutral-400 mt-1">/salva.clothing</p>
+            <p class="text-xs text-neutral-300 mt-3">Novedades de la tienda en Tarija, promociones de fin de semana y
+              horarios especiales de atención.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-neutral-700 text-xs font-bold uppercase tracking-wider text-white">
+            Seguir en Facebook
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contacto" class="bg-black text-white pt-16 pb-12 border-t border-neutral-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-800">
+
+        <!-- Columna Marca -->
+        <div class="md:col-span-1">
+          <div
+            class="bg-white text-black inline-block px-3 py-1 font-heading text-2xl font-black tracking-tighter mb-4">
+            SALVA
+          </div>
+          <p class="text-xs text-neutral-400 leading-relaxed">
+            descripcion resumida de toda las cosas que vende la tienda.
+          </p>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-neutral-300 mb-4">Navegación</h4>
+          <ul class="text-xs space-y-2.5 text-neutral-400">
+            <li><a href="#catalogo" class="hover:text-white transition">Catálogo de Prendas</a></li>
+            <li><a href="#croquis" class="hover:text-white transition">Croquis de Ubicación</a></li>
+            <li><a href="#redes" class="hover:text-white transition">Canales Oficiales</a></li>
+            <li><a href="https://wa.me/59178234567" target="_blank" class="hover:text-white transition">Contacto por
+                WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto Directo -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-neutral-300 mb-4">Atención en Tarija</h4>
+          <ul class="text-xs space-y-2.5 text-neutral-400">
+            <li class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i>
+              <span>Calle Ingavi #482, Tarija</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <a href="https://wa.me/59178234567" target="_blank" class="hover:text-white">+591 78234567 (WhatsApp)</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-white"></i>
+              <span>contacto@salva.bo</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Redes Sociales y WhatsApp -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-neutral-300 mb-4">Nuestras Redes</h4>
+          <div class="flex items-center gap-3 mb-4">
+            <a href="https://www.tiktok.com/@salva_bo" target="_blank"
+              class="w-9 h-9 border border-neutral-700 hover:border-white rounded flex items-center justify-center transition">
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
+                <path
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/salva.tarija" target="_blank"
+              class="w-9 h-9 border border-neutral-700 hover:border-white rounded flex items-center justify-center transition">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.facebook.com/salva.clothing" target="_blank"
+              class="w-9 h-9 border border-neutral-700 hover:border-white rounded flex items-center justify-center transition">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+          </div>
+          <p class="text-[11px] text-neutral-500">
+            Envíos locales en Tarija el mismo día y encomiendas a nivel nacional.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500">
+        <div>
+          &copy; 2026 SALVA Bolivia • Todos los derechos reservados.
+        </div>
+        <div class="flex items-center gap-4">
+          <span>Tarija • Bolivia</span>
+          <span>Diseño Monocromo</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- DRAWER DEL CARRITO DE COMPRAS -->
+  <div id="cartOverlay" onclick="toggleCart(false)"
+    class="hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity"></div>
+
+  <div id="cartDrawer"
+    class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white border-l border-black z-50 translate-x-full shadow-2xl flex flex-col justify-between">
+
+    <!-- Header Carrito -->
+    <div class="p-5 border-b border-gray-200 flex items-center justify-between bg-black text-white">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+        <h3 class="text-sm font-black uppercase tracking-wider font-heading">Tu Bolsa de Compras</h3>
+      </div>
+      <button onclick="toggleCart(false)" class="p-1 hover:opacity-75 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Lista de Artículos -->
+    <div id="cartItemsList" class="p-5 overflow-y-auto flex-grow divide-y divide-gray-100">
+      <!-- Inyectado por app.js -->
+    </div>
+
+    <!-- Footer Carrito con Checkout a WhatsApp -->
+    <div class="p-5 border-t border-gray-200 bg-neutral-50">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-xs font-bold uppercase tracking-wider text-gray-600">Subtotal Estimado:</span>
+        <span id="cartSubtotal" class="text-xl font-black text-black">Bs. 0</span>
+      </div>
+
+      <p class="text-[11px] text-gray-500 mb-4 leading-normal">
+        Al hacer clic en el botón, se generará el resumen de tu pedido listo para enviar a nuestro WhatsApp oficial en
+        Tarija.
+      </p>
+
+      <button onclick="checkoutViaWhatsapp()"
+        class="w-full py-3.5 bg-black text-white hover:bg-neutral-800 text-xs font-bold uppercase tracking-widest transition flex items-center justify-center gap-2 border border-black shadow-md">
+        <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+        <span>Finalizar Pedido por WhatsApp</span>
+      </button>
+
+      <button onclick="toggleCart(false)"
+        class="w-full mt-2 py-2 text-center text-xs text-gray-500 hover:text-black font-semibold transition">
+        Seguir explorando prendas
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MODAL DE DETALLE DE PRENDA -->
+  <div id="productModal"
+    class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm p-4 overflow-y-auto flex items-center justify-center">
+    <div id="productModalContent" class="w-full max-w-2xl">
+      <!-- Inyectado dinámicamente por app.js -->
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE PULSANTE DE WHATSAPP -->
+  <aside class="fixed bottom-6 right-6 z-40 flex items-center gap-2">
+    <!-- Tooltip explicativo -->
+    <div
+      class="hidden sm:flex bg-black text-white text-[11px] font-bold px-3 py-1.5 shadow-lg border border-white/20 whitespace-nowrap">
+      ¿Consultas? Escríbenos a WhatsApp
+    </div>
+
+    <a href="https://wa.me/59178234567?text=Hola%20SALVA,%20estoy%20en%20su%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta"
+      target="_blank" rel="noopener noreferrer"
+      class="pulse-button w-14 h-14 bg-black text-white border-2 border-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition duration-300 group"
+      title="Contactar por WhatsApp">
+      <i data-lucide="message-circle" class="w-7 h-7 text-white group-hover:scale-110 transition-transform"></i>
+    </a>
+  </aside>
+
+  <!-- Script Principal -->
+  <script src="app.js"></script>
+
+</body>
+
+</html>

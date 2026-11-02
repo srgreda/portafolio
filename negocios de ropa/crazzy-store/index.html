@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRAZZY | Streetwear & Urban Store - Tarija, Bolivia</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#0a0a0a',
+              dark: '#121212',
+              card: '#18181b',
+              border: '#27272a',
+              red: '#ff1744',
+              'red-dark': '#d50000',
+              'red-glow': '#ff174440',
+              white: '#ffffff',
+              gray: '#a1a1aa'
+            }
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Montserrat"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-brand-black text-white font-body selection:bg-brand-red selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div
+    class="bg-brand-red text-white py-1.5 px-4 text-xs font-semibold text-center tracking-wider uppercase flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-white animate-ping"></span>
+    <span>🔥 Nueva Colección 2026 en Tarija | Envíos a todo el país y entregas directas por WhatsApp</span>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 bg-brand-black/90 backdrop-blur-md border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center gap-2 group">
+        <div
+          class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-red to-red-600 flex items-center justify-center font-display font-black text-2xl text-white shadow-lg shadow-brand-red/30 transform group-hover:scale-105 transition-all">
+          C
+        </div>
+        <div class="flex flex-col">
+          <span
+            class="font-display font-black text-2xl tracking-tighter text-white group-hover:text-brand-red transition-colors">
+            CRAZZY<span class="text-brand-red text-3xl leading-none">.</span>
+          </span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gray -mt-1">Streetwear • Tarija</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300">
+        <a href="#inicio" class="hover:text-brand-red transition-colors">Inicio</a>
+        <a href="#catalogo" class="hover:text-brand-red transition-colors flex items-center gap-1.5">
+          <span>Catálogo</span>
+          <span
+            class="px-1.5 py-0.5 text-[10px] bg-brand-red/20 text-brand-red border border-brand-red/30 rounded-full font-bold">5
+            prendas</span>
+        </a>
+        <a href="#croquis" class="hover:text-brand-red transition-colors">Ubicación & Croquis</a>
+        <a href="#contacto" class="hover:text-brand-red transition-colors">Contacto</a>
+      </nav>
+
+      <!-- Right Action & Social Quick Icons -->
+      <div class="flex items-center gap-3">
+        <!-- Social quick links -->
+        <div class="hidden sm:flex items-center gap-2 pr-3 border-r border-brand-border">
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" title="TikTok"
+            class="w-8 h-8 rounded-full bg-brand-dark flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all text-sm">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram"
+            class="w-8 h-8 rounded-full bg-brand-dark flex items-center justify-center text-zinc-400 hover:text-pink-500 hover:bg-zinc-800 transition-all text-sm">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"
+            class="w-8 h-8 rounded-full bg-brand-dark flex items-center justify-center text-zinc-400 hover:text-blue-500 hover:bg-zinc-800 transition-all text-sm">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </div>
+
+        <!-- WhatsApp Button in Navbar -->
+        <a id="nav-whatsapp-btn"
+          href="https://wa.me/59178245678?text=Hola%20CRAZZY!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20prendas"
+          target="_blank" rel="noopener noreferrer"
+          class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-emerald-900/30 transition-all transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span class="hidden xs:inline">WhatsApp</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white p-2">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-b border-brand-border px-4 py-4 space-y-3">
+      <a href="#inicio" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Inicio</a>
+      <a href="#catalogo" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Catálogo y Prendas</a>
+      <a href="#croquis" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Ubicación y Croquis
+        Tarija</a>
+      <a href="#contacto" class="block py-2 text-zinc-300 hover:text-brand-red font-medium">Redes Sociales y
+        Teléfono</a>
+      <div class="flex items-center gap-4 pt-3 border-t border-brand-border">
+        <span class="text-xs text-zinc-400">Síguenos:</span>
+        <a href="https://www.tiktok.com" target="_blank" class="text-zinc-300 hover:text-brand-red"><i
+            class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com" target="_blank" class="text-zinc-300 hover:text-pink-500"><i
+            class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com" target="_blank" class="text-zinc-300 hover:text-blue-500"><i
+            class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio"
+    class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brand-black via-zinc-950 to-brand-black border-b border-brand-border/50">
+    <!-- Ambient Red Glows -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-red/20 rounded-full blur-[120px] pointer-events-none">
+    </div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-brand-red/15 rounded-full blur-[140px] pointer-events-none">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-red/10 border border-brand-red/30 text-brand-red text-xs font-bold tracking-widest uppercase">
+            <i class="fa-solid fa-bolt"></i>
+            ESTILO URBANO EXCLUSIVO • TARIJA
+          </div>
+
+          <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-none text-white">
+            ROMPE LO <br>
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-500 to-rose-400 crazzy-glow-text">
+              CONVENCIONAL.
+            </span><br>
+            VISTE <span class="underline decoration-brand-red decoration-4 underline-offset-8">CRAZZY</span>
+          </h1>
+
+          <p class="text-brand-gray text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+            "aqui pueden agregar un resumen de todo lo que vende la tienda". Haz tus pedidos directos a nuestro WhatsApp
+            en Tarija.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#catalogo"
+              class="px-8 py-3.5 bg-brand-red hover:bg-brand-red-dark text-white font-bold rounded-xl shadow-lg shadow-brand-red/30 transition-all transform hover:-translate-y-1 flex items-center gap-2">
+              <i class="fa-solid fa-shirt"></i>
+              <span>Ver Colección</span>
+            </a>
+            <a href="https://wa.me/59178245678?text=Hola%20CRAZZY!%20Quiero%20hacer%20un%20pedido%20o%20consulta"
+              target="_blank" rel="noopener noreferrer"
+              class="px-6 py-3.5 bg-zinc-900 hover:bg-zinc-800 text-white border border-brand-border hover:border-emerald-500 rounded-xl transition-all flex items-center gap-2 group">
+              <i class="fa-brands fa-whatsapp text-emerald-400 group-hover:scale-110 transition-transform"></i>
+              <span>Escribir al WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Feature badges -->
+          <div class="grid grid-cols-3 gap-3 pt-6 border-t border-brand-border/60 max-w-lg mx-auto lg:mx-0 text-left">
+            <div>
+              <div class="font-display font-black text-lg text-white">100%</div>
+              <div class="text-xs text-brand-gray">Algodón pesado y calidad</div>
+            </div>
+            <div>
+              <div class="font-display font-black text-lg text-brand-red">Tarija</div>
+              <div class="text-xs text-brand-gray">Punto de retiro céntrico</div>
+            </div>
+            <div>
+              <div class="font-display font-black text-lg text-white">Rápido</div>
+              <div class="text-xs text-brand-gray">Respuesta WhatsApp inmediata</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md">
+            <!-- Background stylized frame -->
+            <div
+              class="absolute -inset-1.5 bg-gradient-to-r from-brand-red via-zinc-800 to-brand-red rounded-3xl blur-md opacity-70 group-hover:opacity-100 transition duration-1000">
+            </div>
+
+            <div class="relative bg-brand-card border border-brand-border rounded-2xl overflow-hidden p-3 shadow-2xl">
+              <div class="relative h-[420px] rounded-xl overflow-hidden">
+                <img src="https://i.pinimg.com/1200x/1e/07/71/1e077194fcfa49f17803b3fe019ce4b4.jpg"
+                  alt="CRAZZY Streetwear Collection"
+                  class="w-full h-full object-cover object-top hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="bg-black/80 backdrop-blur-md text-brand-red border border-brand-red/40 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">
+                    DROP #01 • CRAZZY
+                  </span>
+                </div>
+
+                <div
+                  class="absolute bottom-4 left-4 right-4 bg-brand-dark/90 backdrop-blur-md p-3.5 rounded-xl border border-brand-border">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="font-display font-bold text-white text-base">"algo nuevo que le llego a la tienda"</h4>
+                      <p class="text-xs text-brand-gray">Disponible en tienda y pedidos WhatsApp</p>
+                    </div>
+                    <span class="px-2.5 py-1 bg-brand-red text-white text-xs font-black rounded-lg">
+                      NEW
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Products & Catalog Section with Filters -->
+  <section id="catalogo" class="py-16 sm:py-24 bg-brand-black relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2
+          class="text-brand-red font-bold text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+          <span class="w-8 h-px bg-brand-red"></span>
+          Catálogo Seleccionado
+          <span class="w-8 h-px bg-brand-red"></span>
+        </h2>
+        <p class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+          NUESTRAS 5 PRENDAS DESTACADAS
+        </p>
+        <p class="text-brand-gray text-sm mt-3">
+          Explora los modelos, filtra por categoría o busca tu estilo. Cada prenda cuenta con botón directo a WhatsApp
+          para consultar disponibilidad o apartar tu talla.
+        </p>
+      </div>
+
+      <!-- Filter Controls & Search Bar -->
+      <div class="bg-brand-card border border-brand-border rounded-2xl p-4 sm:p-6 mb-10 shadow-xl">
+        <div class="flex flex-col lg:flex-row gap-4 items-center justify-between">
+
+          <!-- Category Pills Filter -->
+          <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto" id="category-filters">
+            <button class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all"
+              data-category="todos">
+              <i class="fa-solid fa-layer-group mr-1.5"></i> Todos (5)
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all"
+              data-category="hoodies">
+              <i class="fa-solid fa-vest-patches mr-1.5"></i> Hoodies
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all"
+              data-category="poleras">
+              <i class="fa-solid fa-shirt mr-1.5"></i> Poleras
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all"
+              data-category="pantalones">
+              <i class="fa-solid fa-socks mr-1.5"></i> Pantalones
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all"
+              data-category="chaquetas">
+              <i class="fa-solid fa-vest mr-1.5"></i> Chaquetas
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all"
+              data-category="accesorios">
+              <i class="fa-solid fa-hat-cowboy mr-1.5"></i> Accesorios
+            </button>
+          </div>
+
+          <!-- Live Search Input -->
+          <div class="relative w-full lg:w-72">
+            <input type="text" id="search-input" placeholder="Buscar por nombre o detalle..."
+              class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-2.5 pl-10 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-zinc-500 text-xs"></i>
+            <button id="clear-search" class="hidden absolute right-3 top-3 text-zinc-400 hover:text-white text-xs">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Filter stats and active tag -->
+        <div
+          class="mt-4 pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs text-brand-gray">
+          <div>
+            Mostrando <span id="filtered-count" class="text-white font-bold">5</span> de 5 prendas
+          </div>
+          <div class="text-[11px] text-zinc-400">
+            * Precios expresados en Bolivianos (Bs.)
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Empty Results State -->
+      <div id="empty-state" class="hidden py-16 text-center">
+        <div
+          class="w-16 h-16 rounded-full bg-brand-card border border-brand-border flex items-center justify-center mx-auto text-brand-red text-2xl mb-4">
+          <i class="fa-solid fa-filter-circle-xmark"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-1">No se encontraron prendas</h3>
+        <p class="text-sm text-brand-gray mb-4">Intenta cambiando el filtro o la palabra clave de búsqueda.</p>
+        <button id="reset-filters-btn"
+          class="px-4 py-2 bg-brand-red text-white text-xs font-bold rounded-lg hover:bg-brand-red-dark transition-colors">
+          Restablecer Filtros
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Location & Croquis Section (Tarija, Bolivia) -->
+  <section id="croquis" class="py-16 sm:py-24 bg-zinc-950 border-t border-b border-brand-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/10 border border-brand-red/30 text-brand-red text-xs font-bold tracking-widest uppercase mb-2">
+          <i class="fa-solid fa-location-dot"></i>
+          PUNTO DE VENTA FÍSICO
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+          CROQUIS Y UBICACIÓN EN TARIJA
+        </h2>
+        <p class="text-brand-gray text-sm mt-3">
+          Ven a conocer y probarte todas nuestras prendas en nuestro local en el centro histórico de Tarija, Bolivia.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+        <!-- Croquis Graphic & Details Card (5 cols) -->
+        <div
+          class="lg:col-span-5 bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+
+          <!-- Background decoration -->
+          <div
+            class="absolute -right-10 -bottom-10 w-44 h-44 bg-brand-red/10 rounded-full blur-3xl pointer-events-none">
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-4">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 rounded-xl bg-brand-red/20 border border-brand-red/40 flex items-center justify-center text-brand-red">
+                  <i class="fa-solid fa-map-location-dot text-lg"></i>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-white text-lg">CRAZZY STORE TARIJA</h3>
+                  <p class="text-xs text-brand-gray">Tarija, Cercado - Bolivia</p>
+                </div>
+              </div>
+              <span
+                class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800 text-[11px] font-bold rounded-lg flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Abierto Hoy
+              </span>
+            </div>
+
+            <!-- Address and Key Landmarks -->
+            <div class="space-y-4 my-6">
+              <div class="flex items-start gap-3">
+                <div class="text-brand-red mt-1 text-sm"><i class="fa-solid fa-diamond"></i></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-brand-gray font-bold">Dirección Exacta:</p>
+                  <p class="text-sm font-semibold text-white">Calle Sucre #684, entre 15 de Abril y Madrid</p>
+                  <p class="text-xs text-zinc-400">Zona Central, Tarija - Bolivia</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="text-brand-red mt-1 text-sm"><i class="fa-solid fa-compass"></i></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-brand-gray font-bold">Referencias del Croquis:</p>
+                  <ul class="text-xs text-zinc-300 space-y-1 mt-1">
+                    <li>📍 A media cuadra de la <strong>Plaza Principal Luis de Fuentes y Vargas</strong>.</li>
+                    <li>🏢 Justo al frente del Café Plaza y a pasos de la Casa de la Cultura.</li>
+                    <li>🚶‍♂️ Fácil acceso peatonal y estacionamiento cercano sobre calle Sucre.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="text-brand-red mt-1 text-sm"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-brand-gray font-bold">Horarios de Atención:</p>
+                  <p class="text-xs text-zinc-300"><strong>Lunes a Sábado:</strong> 09:30 - 12:30 y 15:30 - 20:30</p>
+                  <p class="text-xs text-zinc-400"><strong>Domingos:</strong> 16:00 - 20:00</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="text-brand-red mt-1 text-sm"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-brand-gray font-bold">Teléfono de Tarija:</p>
+                  <p class="text-sm font-bold text-white flex items-center gap-2">
+                    <span>+591 78245678</span>
+                    <span class="text-[10px] bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded">Tigo / WhatsApp</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stylized Visual Schematic Croquis Box -->
+            <div class="mt-4 p-3.5 bg-brand-dark rounded-xl border border-dashed border-brand-border">
+              <div
+                class="text-[11px] font-bold text-brand-gray uppercase tracking-wider mb-2 flex items-center justify-between">
+                <span>Esquema de Calles (Croquis)</span>
+                <span class="text-brand-red font-mono text-[10px]">Eje Central</span>
+              </div>
+              <div
+                class="relative bg-zinc-900 h-28 rounded-lg overflow-hidden border border-zinc-800 flex items-center justify-center p-2 text-center text-xs">
+                <!-- Visual street grid lines -->
+                <div
+                  class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-6 bg-zinc-800/80 border-y border-zinc-700/60 flex items-center justify-around text-[10px] text-zinc-400 font-mono">
+                  <span>← Calle 15 de Abril</span>
+                  <span class="text-brand-red font-black px-2 bg-black/60 rounded">C. SUCRE</span>
+                  <span>Calle Madrid →</span>
+                </div>
+                <div
+                  class="absolute top-1 left-3 bg-zinc-800 text-zinc-400 text-[9px] px-2 py-0.5 rounded border border-zinc-700">
+                  🏛️ Plaza Principal (50m)
+                </div>
+                <div
+                  class="relative z-10 px-3 py-1.5 bg-brand-red text-white text-xs font-black rounded-lg shadow-lg shadow-brand-red/50 animate-bounce flex items-center gap-1.5">
+                  <i class="fa-solid fa-store"></i> CRAZZY STORE
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Direct action buttons -->
+          <div class="mt-6 pt-4 border-t border-brand-border flex gap-3">
+            <a href="https://maps.google.com/?q=-21.5338,-64.7335" target="_blank" rel="noopener noreferrer"
+              class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 border border-zinc-700 transition-colors">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Abrir Google Maps
+            </a>
+            <a href="https://wa.me/59178245678?text=Hola%20CRAZZY!%20%C2%BFMe%20pueden%20enviar%20su%20ubicaci%C3%B3n%20en%20tiempo%20real%20por%20WhatsApp?"
+              target="_blank" rel="noopener noreferrer"
+              class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              Pedir Ubicación
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Interactive Leaflet Map (7 cols) -->
+        <div
+          class="lg:col-span-7 bg-brand-card border border-brand-border rounded-2xl overflow-hidden shadow-2xl flex flex-col min-h-[420px]">
+          <div class="p-4 bg-brand-dark border-b border-brand-border flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-brand-red"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-white">Mapa Urbano Tarija
+                (Interactivo)</span>
+            </div>
+            <span class="text-[11px] text-brand-gray font-mono">Plaza Luis de Fuentes / C. Sucre</span>
+          </div>
+
+          <!-- Map Container -->
+          <div id="tarija-map" class="flex-1 w-full h-[380px] lg:h-full min-h-[350px] z-10"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact, Bolivian Phone & Social Media Section -->
+  <section id="contacto" class="py-16 sm:py-24 bg-brand-black relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2
+          class="text-brand-red font-bold text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+          <span class="w-8 h-px bg-brand-red"></span>
+          Conéctate con CRAZZY
+          <span class="w-8 h-px bg-brand-red"></span>
+        </h2>
+        <p class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+          NUESTRAS REDES SOCIALES & CONTACTO
+        </p>
+        <p class="text-brand-gray text-sm mt-3">
+          Síguenos para nuevos lanzamientos, sorteos y drops limitados. Comunícate directamente con nuestro equipo en
+          Tarija, Bolivia.
+        </p>
+      </div>
+
+      <!-- Social Media Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer"
+          class="group p-6 bg-brand-card border border-brand-border hover:border-zinc-500 rounded-2xl flex flex-col items-center text-center transition-all transform hover:-translate-y-1.5 shadow-xl relative overflow-hidden">
+          <div
+            class="w-14 h-14 rounded-2xl bg-black border border-zinc-700 flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 group-hover:border-white transition-all shadow-lg">
+            <i class="fa-brands fa-tiktok"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-1">TikTok</h3>
+          <p class="text-xs text-brand-red font-mono font-bold mb-2">@crazzy.tarija</p>
+          <p class="text-xs text-brand-gray leading-relaxed mb-4">
+            Mira los outfits reales, pruebas de tallas y drops exclusivos en videos cortos.
+          </p>
+          <span
+            class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold text-white group-hover:text-brand-red transition-colors">
+            <span>Seguir en TikTok</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+          class="group p-6 bg-brand-card border border-brand-border hover:border-pink-500/50 rounded-2xl flex flex-col items-center text-center transition-all transform hover:-translate-y-1.5 shadow-xl relative overflow-hidden">
+          <div
+            class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 transition-all shadow-lg shadow-pink-900/30">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-1">Instagram</h3>
+          <p class="text-xs text-pink-400 font-mono font-bold mb-2">@crazzy_bo</p>
+          <p class="text-xs text-brand-gray leading-relaxed mb-4">
+            Lookbooks fotográficos, historias diarias con stock disponible y promociones.
+          </p>
+          <span
+            class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold text-white group-hover:text-pink-400 transition-colors">
+            <span>Ver perfil en Instagram</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </span>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+          class="group p-6 bg-brand-card border border-brand-border hover:border-blue-500/50 rounded-2xl flex flex-col items-center text-center transition-all transform hover:-translate-y-1.5 shadow-xl relative overflow-hidden">
+          <div
+            class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 transition-all shadow-lg shadow-blue-900/30">
+            <i class="fa-brands fa-facebook-f"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-1">Facebook</h3>
+          <p class="text-xs text-blue-400 font-mono font-bold mb-2">CRAZZY Streetwear Tarija</p>
+          <p class="text-xs text-brand-gray leading-relaxed mb-4">
+            "algo que quisieran poner si es tienen cuenta de facebook"
+          </p>
+          <span
+            class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold text-white group-hover:text-blue-400 transition-colors">
+            <span>Ir a la página de Facebook</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </span>
+        </a>
+
+      </div>
+
+      <!-- Main Bolivian Contact Banner -->
+      <div
+        class="bg-gradient-to-r from-brand-card via-zinc-900 to-brand-card border border-brand-red/40 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+        <div class="absolute -right-16 -top-16 w-60 h-60 bg-brand-red/20 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="lg:col-span-8 text-center lg:text-left space-y-4">
+            <span class="px-3 py-1 bg-brand-red text-white text-[11px] font-black uppercase tracking-wider rounded-md">
+              ATENCIÓN PERSONALIZADA BOLIVIA
+            </span>
+            <h3 class="font-display font-black text-2xl sm:text-3xl text-white">
+              ¿Quieres consultar una talla o pedir directo?
+            </h3>
+            <p class="text-zinc-300 text-sm max-w-xl">
+              Llámanos o chatea con nosotros a nuestro número. Te atenderemos al instante con fotos reales de
+              las prendas y formas de pago (QR, efectivo o transferencia bancaria).
+            </p>
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <div class="flex items-center gap-3 bg-brand-black/70 px-4 py-2.5 rounded-xl border border-brand-border">
+                <i class="fa-solid fa-phone text-brand-red text-lg"></i>
+                <div>
+                  <span class="text-[10px] text-brand-gray uppercase block font-bold">Línea Móvil Tarija</span>
+                  <span class="text-sm sm:text-base font-bold font-mono text-white">+591 78245678</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 bg-brand-black/70 px-4 py-2.5 rounded-xl border border-brand-border">
+                <i class="fa-solid fa-truck-fast text-brand-red text-lg"></i>
+                <div>
+                  <span class="text-[10px] text-brand-gray uppercase block font-bold">Envíos</span>
+                  <span class="text-sm font-semibold text-white">Tarija y todo Bolivia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col gap-3 justify-center items-center lg:items-end">
+            <a href="https://wa.me/59178245678?text=Hola%20CRAZZY!%20Quisiera%20hacer%20una%20consulta%20general"
+              target="_blank" rel="noopener noreferrer"
+              class="w-full sm:w-auto px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-xl shadow-emerald-950 flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <div class="text-left">
+                <div class="text-[10px] uppercase font-bold text-emerald-200">Iniciar Chat Directo</div>
+                <div class="text-sm font-black">+591 78245678</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Product Detail & WhatsApp Order Modal -->
+  <div id="product-modal"
+    class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div
+      class="bg-brand-card border border-brand-border w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl animate-fade-in relative">
+
+      <!-- Close button -->
+      <button id="close-modal"
+        class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-brand-dark/80 text-zinc-300 hover:text-white hover:bg-brand-red flex items-center justify-center transition-all">
+        <i class="fa-solid fa-xmark text-base"></i>
+      </button>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2">
+        <!-- Modal Image -->
+        <div class="h-64 sm:h-full bg-brand-dark relative overflow-hidden">
+          <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+          <span id="modal-category"
+            class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 backdrop-blur-md text-brand-red border border-brand-red/40 rounded-full text-[10px] font-black uppercase">
+          </span>
+        </div>
+
+        <!-- Modal Info -->
+        <div class="p-6 flex flex-col justify-between">
+          <div>
+            <h3 id="modal-title" class="font-display font-black text-2xl text-white mb-1"></h3>
+            <p id="modal-tagline" class="text-xs text-brand-gray mb-3"></p>
+
+            <div class="flex items-baseline gap-2 mb-4">
+              <span id="modal-price" class="font-display font-black text-2xl text-brand-red"></span>
+              <span class="text-xs text-zinc-400">Bs. (Bolivianos)</span>
+            </div>
+
+            <p id="modal-desc" class="text-xs text-zinc-300 leading-relaxed mb-4"></p>
+
+            <!-- Size Selector -->
+            <div class="mb-4">
+              <label class="block text-[11px] uppercase font-bold text-brand-gray tracking-wider mb-2">Selecciona tu
+                talla:</label>
+              <div id="modal-sizes" class="flex flex-wrap gap-2">
+                <!-- Sizes inserted via JS -->
+              </div>
+            </div>
+
+            <!-- Material / details -->
+            <div
+              class="p-2.5 bg-brand-dark rounded-lg border border-brand-border text-[11px] text-zinc-400 space-y-1 mb-6">
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-check text-brand-red"></i> <span>Disponible para retiro en tienda Tarija</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-check text-brand-red"></i> <span>Envíos rápidos por encomienda a Bolivia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp Order Action -->
+          <div>
+            <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
+              class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-950 transition-all transform hover:-translate-y-0.5">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Ordenar por WhatsApp</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/59178245678?text=Hola%20CRAZZY!%20Quiero%20hacer%20una%20consulta%20por%20favor"
+    target="_blank" rel="noopener noreferrer" title="Escríbenos a WhatsApp (+591 78245678)"
+    class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl shadow-emerald-900/60 flex items-center gap-2.5 border-2 border-emerald-400/40 hover:scale-105 transition-all">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+    <span class="hidden sm:inline text-xs font-black uppercase tracking-wider">Pedir por WhatsApp</span>
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-brand-border py-12 text-zinc-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="font-display font-black text-2xl text-white tracking-tight">CRAZZY<span
+                class="text-brand-red">.</span></span>
+          </div>
+          <p class="text-xs text-zinc-500">
+            Tienda demo de ropa streetwear en Tarija, Bolivia. Prendas únicas diseñadas para romper la rutina.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3">Navegación</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#inicio" class="hover:text-brand-red">Inicio</a></li>
+            <li><a href="#catalogo" class="hover:text-brand-red">Catálogo 5 Prendas</a></li>
+            <li><a href="#croquis" class="hover:text-brand-red">Croquis Tarija</a></li>
+            <li><a href="#contacto" class="hover:text-brand-red">Contacto & Redes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3">Ubicación Tarija</h4>
+          <p class="text-zinc-500 mb-1">Calle Sucre #684 entre 15 de Abril y Madrid</p>
+          <p class="text-zinc-500 mb-1">Zona Central, Tarija - Bolivia</p>
+          <p class="text-brand-red font-mono font-bold mt-2">+591 78245678</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3">Redes Sociales</h4>
+          <div class="flex gap-2">
+            <a href="https://www.tiktok.com" target="_blank"
+              class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank"
+              class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-zinc-400 hover:text-pink-400 hover:bg-zinc-800">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank"
+              class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-zinc-400 hover:text-blue-400 hover:bg-zinc-800">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://wa.me/59178245678" target="_blank"
+              class="w-8 h-8 rounded-lg bg-emerald-950 flex items-center justify-center text-emerald-400 hover:text-emerald-300 hover:bg-emerald-900">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+          <p class="text-[11px] text-zinc-500 mt-3">Tarija • Bolivia • 2026</p>
+        </div>
+
+      </div>
+
+      <div
+        class="border-t border-zinc-900 pt-6 flex flex-col sm:flex-row items-center justify-between text-zinc-600 text-[11px]">
+        <p>© 2026 CRAZZY Store. Todos los derechos reservados. Diseñado por Sr Greda</p>
+        <p>Tarija, Bolivia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- App JS -->
+  <script src="app.js"></script>
+</body>
+
+</html>

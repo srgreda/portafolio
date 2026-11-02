@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de proyectos web: tiendas online y una aplicación de tareas.">
+  <title>Mis proyectos web | Portafolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f5f7ff;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 15% 0%, rgba(111, 77, 255, 0.22), transparent 38rem),
+        radial-gradient(ellipse at 100% 35%, rgba(15, 183, 199, 0.12), transparent 34rem),
+        #0b1020;
+    }
+
+    main {
+      width: min(100% - 40px, 1080px);
+      margin: 0 auto;
+      padding: 88px 0 56px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #a99aff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(2.6rem, 8vw, 5rem);
+      letter-spacing: -0.065em;
+      line-height: 1;
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 22px 0 48px;
+      color: #aab3c8;
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      display: flex;
+      min-height: 220px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 26px;
+      border: 1px solid rgba(183, 193, 224, 0.16);
+      border-radius: 20px;
+      background: rgba(20, 27, 48, 0.82);
+      text-decoration: none;
+      transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(169, 154, 255, 0.7);
+      background: #171f38;
+    }
+
+    .project-card:focus-visible {
+      outline: 3px solid #a99aff;
+      outline-offset: 4px;
+    }
+
+    .project-type {
+      margin: 0 0 18px;
+      color: #a99aff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      color: #f5f7ff;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .project-description {
+      margin: 0 0 24px;
+      color: #aab3c8;
+      line-height: 1.6;
+    }
+
+    .project-link {
+      margin-top: auto;
+      color: #c1b7ff;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #7f8aa4;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-top: 60px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        min-height: 195px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Portafolio · Desarrollo web</p>
+      <h1>Mis proyectos web</h1>
+      <p class="intro">
+        Una colección de sitios y aplicaciones que fui creando para practicar diseño,
+        interactividad y experiencias para la web.
+      </p>
+    </header>
+
+    <section class="project-grid" aria-label="Proyectos">
+      <a class="project-card" href="listas%20de%20tarea%20antigravity/">
+        <p class="project-type">Aplicación web</p>
+        <h2>Lista de tareas</h2>
+        <p class="project-description">Organiza tareas, filtra pendientes y guarda los cambios en el navegador.</p>
+        <span class="project-link">Ver proyecto &rarr;</span>
+      </a>
+
+      <a class="project-card" href="negocios%20de%20ropa/crazzy-store/">
+        <p class="project-type">Tienda online · Streetwear</p>
+        <h2>CRAZZY Store</h2>
+        <p class="project-description">Catálogo de ropa urbana con búsqueda, filtros y contacto por WhatsApp.</p>
+        <span class="project-link">Ver proyecto &rarr;</span>
+      </a>
+
+      <a class="project-card" href="negocios%20de%20ropa/salva-store/">
+        <p class="project-type">Tienda online</p>
+        <h2>SALVA Store</h2>
+        <p class="project-description">Una propuesta de tienda de ropa con catálogo y ubicación interactiva.</p>
+        <span class="project-link">Ver proyecto &rarr;</span>
+      </a>
+
+      <a class="project-card" href="negocios%20de%20ropa/tienda-ropa-verde/">
+        <p class="project-type">Tienda online</p>
+        <h2>Tienda de ropa verde</h2>
+        <p class="project-description">Diseño de tienda con catálogo y una identidad visual en tonos verdes.</p>
+        <span class="project-link">Ver proyecto &rarr;</span>
+      </a>
+    </section>
+
+    <footer>
+      <p>Hecho con HTML, CSS y JavaScript.</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,163 @@
+/* ==========================================================================
+   CRAZZY STORE - CUSTOM STYLES (Red / Black / White Palette)
+   ========================================================================== */
+
+/* Neon / Ambient Red Glows */
+.crazzy-glow-text {
+  text-shadow: 0 0 25px rgba(255, 23, 68, 0.6), 0 0 50px rgba(255, 23, 68, 0.3);
+}
+
+.crazzy-glow-box {
+  box-shadow: 0 0 30px rgba(255, 23, 68, 0.25);
+}
+
+.crazzy-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.crazzy-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 23, 68, 0.6);
+  box-shadow: 0 12px 30px -10px rgba(255, 23, 68, 0.3);
+}
+
+/* Category Filter Button States */
+.filter-btn {
+  background-color: #121212;
+  color: #a1a1aa;
+  border: 1px solid #27272a;
+}
+
+.filter-btn:hover {
+  background-color: #1c1c1f;
+  color: #ffffff;
+  border-color: #3f3f46;
+}
+
+.filter-btn.active {
+  background-color: #ff1744 !important;
+  color: #ffffff !important;
+  border-color: #ff1744 !important;
+  box-shadow: 0 4px 15px rgba(255, 23, 68, 0.35);
+}
+
+/* Size Badge Button States */
+.size-btn {
+  border: 1px solid #3f3f46;
+  background-color: #18181b;
+  color: #e4e4e7;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.size-btn:hover {
+  border-color: #ff1744;
+  color: #ffffff;
+}
+
+.size-btn.active {
+  background-color: #ff1744;
+  border-color: #ff1744;
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(255, 23, 68, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1744;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Leaflet Map Customizations */
+.leaflet-container {
+  background-color: #141414 !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Custom dark tile styling */
+.leaflet-tile-pane {
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.65);
+}
+
+/* Custom Map Popup Styling */
+.leaflet-popup-content-wrapper {
+  background: #121212 !important;
+  color: #ffffff !important;
+  border: 1px solid #ff1744 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8) !important;
+}
+
+.leaflet-popup-tip {
+  background: #121212 !important;
+  border: 1px solid #ff1744 !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 14px !important;
+  line-height: 1.4 !important;
+}
+
+/* Custom Red Marker Icon for CRAZZY */
+.crazzy-map-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: #ff1744;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 23, 68, 0.8);
+  font-size: 18px;
+  animation: pulseMarker 2s infinite;
+}
+
+@keyframes pulseMarker {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.7);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 25px rgba(255, 23, 68, 1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.7);
+  }
+}
