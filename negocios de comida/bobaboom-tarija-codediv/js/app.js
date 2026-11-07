@@ -13,7 +13,7 @@
  */
 
 // 1. CONFIGURACIÓN Y CONSTANTES
-const STORE_PHONE = '59176194820'; // Número Boliviano de Tarija
+const STORE_PHONE = '59167992051'; // Número Boliviano de Tarija
 const LOCAL_STORAGE_KEY = 'bobaboom_cart_v1';
 
 // 2. CATÁLOGO OFICIAL DE PRODUCTOS (POSTRES Y BEBIDAS)
@@ -352,7 +352,6 @@ if (checkoutWhatsAppBtn) {
     message += `🛵 *Modalidad:* ${deliveryMode}\n`;
     message += `📍 *Dirección/Referencia:* ${address}\n`;
     message += `💳 *Método de pago preferido:* Pago con QR o Efectivo\n\n`;
-    message += `¡Muchas gracias a los michis y perritos reposteros! 🐶🐱`;
 
     const encoded = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${STORE_PHONE}?text=${encoded}`;
