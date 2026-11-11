@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAKURA Maid Café | Comida Otaku, Postres Kawaii & Lectura Manga</title>
+  <meta name="description" content="SAKURA Maid Café: disfruta omurice kawaii, ramen, parfaits y sodas sakura mientras lees los mangas del local sin costo adicional." />
+
+  <!-- Tipografías redondeadas estilo kawaii japonés -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Pétalos de sakura flotantes decorativos -->
+  <div class="sakura-petals-layer" aria-hidden="true" id="sakuraLayer"></div>
+
+  <!-- Toldo superior estilo café japonés (blanco, rosa pastel y celeste pastel) -->
+  <div class="cafe-awning" aria-hidden="true"></div>
+
+  <!-- Barra de anuncio superior -->
+  <div class="top-ribbon">
+    <div class="container top-ribbon-inner">
+      <span class="jp-tag">いらっしゃいませ！</span>
+      <p>📚 <strong>Beneficio del local:</strong> ¡Lee gratis nuestra colección de mangas mientras esperas tu pedido!</p>
+      <a class="ribbon-wa-link" href="https://wa.me/67992051?text=Hola%20SAKURA%20Maid%20Caf%C3%A9%20%F0%9F%8C%B8%20Quiero%20hacer%20una%20consulta%20sobre%20el%20men%C3%BA." target="_blank" rel="noopener noreferrer">
+        WhatsApp: 67992051
+      </a>
+    </div>
+  </div>
+
+  <!-- Header / Navegación principal -->
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand" aria-label="Inicio SAKURA Maid Café">
+        <div class="brand-emblem">
+          <svg viewBox="0 0 64 64" class="sakura-logo-svg" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#FFF0F6" stroke="#FF99C8" stroke-width="2.5"/>
+            <g transform="translate(32,32)">
+              <path d="M0,-20 C7,-20 11,-11 3,-3 C11,-11 20,-7 20,0 C20,7 11,11 3,3 C11,11 7,20 0,20 C-7,20 -11,11 -3,3 C-11,11 -20,7 -20,0 C-20,-7 -11,-11 -3,-3 C-11,-11 -7,-20 0,-20 Z" fill="#FFB3D6" stroke="#FF75B5" stroke-width="1.5"/>
+              <circle cx="0" cy="0" r="5" fill="#A6E1FF" stroke="#FFFFFF" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">SAKURA <small>maid cafe</small></span>
+          <span class="brand-jp">さくらメイドカフェ • Comida Otaku</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#menu" class="nav-link">Menú</a>
+        <a href="#manga-lounge" class="nav-link">Zona Manga</a>
+        <a href="#ubicacion" class="nav-link">Croquis</a>
+        <a href="#redes" class="nav-link">Redes</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://wa.me/67992051?text=%C2%A1Hola%20SAKURA%20Maid%20Caf%C3%A9!%20%F0%9F%8C%B8%20Me%20gustar%C3%ADa%20hacer%20un%20pedido." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-mini" title="Escribir por WhatsApp al 67992051">
+          <span class="wa-icon" aria-hidden="true">💬</span>
+          <span class="btn-label-hide-sm">67992051</span>
+        </a>
+
+        <button type="button" class="btn btn-cart-toggle" id="openCartBtn" aria-label="Abrir carrito de compras">
+          <span class="cart-icon" aria-hidden="true">🛍️</span>
+          <span>Carrito</span>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner estilo interfaz japonesa kawaii -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content anime-window">
+          <div class="window-titlebar">
+            <div class="window-dots">
+              <span class="dot dot-pink"></span>
+              <span class="dot dot-blue"></span>
+              <span class="dot dot-white"></span>
+            </div>
+            <span class="window-title">SAKURA_CAFE_OS.jp — Bienvenido ♥</span>
+            <span class="window-jp">ようこそ！</span>
+          </div>
+
+          <div class="hero-body">
+            <div class="hero-badges">
+              <span class="pill-badge badge-pink">🌸 Estilo Akihabara</span>
+              <span class="pill-badge badge-blue">📚 Lectura Manga Gratis</span>
+            </div>
+
+            <h1 class="hero-title">
+              ¡Bienvenido a <span class="highlight-sakura">SAKURA</span> <span class="highlight-sky">maid cafe</span>!
+            </h1>
+
+            <p class="hero-subtitle">
+              Sabores japoneses irresistibles, postres pastel, hechizos kawaii en tu mesa y una <strong>biblioteca de mangas gratuita</strong> para disfrutar mientras preparamos tu pedido.
+            </p>
+
+            <div class="hero-callout-manga">
+              <div class="callout-icon" aria-hidden="true">📖</div>
+              <div>
+                <strong>¡Tu espera es parte de la magia!</strong>
+                <p>Elige un tomo de nuestra estantería otaku y relájate en el local mientras cocinamos tu comida.</p>
+              </div>
+            </div>
+
+            <div class="hero-buttons">
+              <a href="#menu" class="btn btn-primary btn-lg">
+                ✨ Explorar Menú (5 Platos)
+              </a>
+              <a href="https://wa.me/67992051?text=Hola%20SAKURA%20Maid%20Caf%C3%A9%20%F0%9F%8C%B8%20Quisiera%20reservar%20mesa%20o%20pedir%20comida." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+                💬 WhatsApp 67992051
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-chip">
+                <span class="stat-emoji">🍛</span>
+                <div>
+                  <strong>5 Especialidades</strong>
+                  <small>Menú otaku curado</small>
+                </div>
+              </div>
+              <div class="stat-chip">
+                <span class="stat-emoji">📚</span>
+                <div>
+                  <strong>+120 Mangas</strong>
+                  <small>Lectura libre en local</small>
+                </div>
+              </div>
+              <div class="stat-chip">
+                <span class="stat-emoji">🎀</span>
+                <div>
+                  <strong>Atención Maid</strong>
+                  <small>Ambiente 100% kawaii</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-frame">
+            <div class="vertical-jp-ribbon" aria-hidden="true">さくら・メイドカフェ</div>
+            <img src="https://i.pinimg.com/736x/e2/a0/c8/e2a0c87d15592fbaaba07a8ab5473f8a.jpg" alt="Ilustración anime kawaii del interior de SAKURA Maid Café con comida japonesa y estantes de manga" class="hero-img" />
+            <div class="floating-speech-bubble">
+              <span class="speech-jp">おいしくな〜れ！</span>
+              <p>"¡Que quede delicioso, Moe Moe Kyun! ♥"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Menú con Filtros y 5 Ejemplos del Catálogo -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-jp-label">メニュー • MENÚ KAWAII</span>
+          <h2 class="section-title">Nuestro Catálogo de Comidas Otaku</h2>
+          <p class="section-desc">
+            Filtra por categoría, revisa los detalles de cada platillo y agrégalos a tu carrito para enviar tu pedido directo por WhatsApp.
+          </p>
+        </div>
+
+        <!-- Barra de filtros interactivos -->
+        <div class="menu-controls">
+          <div class="filter-bar" role="tablist" aria-label="Filtrar catálogo del menú">
+            <button type="button" class="filter-btn active" data-filter="todos" role="tab" aria-selected="true">
+              ✨ Todo <span class="filter-count">5</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="platos" role="tab" aria-selected="false">
+              🍛 Platos Kawaii <span class="filter-count">2</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="postres" role="tab" aria-selected="false">
+              🍨 Postres <span class="filter-count">1</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="bebidas" role="tab" aria-selected="false">
+              🥤 Bebidas <span class="filter-count">1</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="combos" role="tab" aria-selected="false">
+              🍱 Combos Manga <span class="filter-count">1</span>
+            </button>
+          </div>
+
+          <div class="search-box">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="search" id="menuSearchInput" placeholder="Buscar omurice, ramen, parfait..." aria-label="Buscar en el menú" />
+          </div>
+        </div>
+
+        <!-- Grid de los 5 productos del catálogo -->
+        <div class="menu-grid" id="menuGrid" aria-live="polite">
+          <!-- Renderizado dinámico desde app.js -->
+        </div>
+
+        <!-- Mensaje vacío cuando el filtro/búsqueda no coincide -->
+        <div class="empty-menu-state hidden" id="emptyMenuState">
+          <div class="empty-emoji">😿</div>
+          <h3>¡Gomenasai! No encontramos ese platillo</h3>
+          <p>Prueba otra palabra o vuelve a mostrar todos nuestros platos kawaii.</p>
+          <button type="button" class="btn btn-secondary" id="resetFiltersBtn">Mostrar todo el menú</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Especial: Lectura de Mangas en el Local -->
+    <section class="manga-section" id="manga-lounge">
+      <div class="container">
+        <div class="manga-banner anime-window">
+          <div class="window-titlebar">
+            <div class="window-dots">
+              <span class="dot dot-pink"></span>
+              <span class="dot dot-blue"></span>
+              <span class="dot dot-white"></span>
+            </div>
+            <span class="window-title">MANGA_LOUNGE.exe — Lectura Gratuita en Local</span>
+            <span class="window-jp">マンガ読み放題</span>
+          </div>
+
+          <div class="manga-grid">
+            <div class="manga-info">
+              <span class="pill-badge badge-pink">📚 Experiencia Única en SAKURA</span>
+              <h2>Lee nuestros mangas mientras esperas tu pedido</h2>
+              <p>
+                En <strong>SAKURA Maid Café</strong> nunca te aburres esperando. Todos nuestros clientes pueden tomar mangas de las estanterías del local sin costo extra mientras preparamos tus platos recién hechos.
+              </p>
+
+              <div class="steps-list">
+                <div class="step-item">
+                  <span class="step-num">01</span>
+                  <div>
+                    <strong>Haz tu pedido en mesa o por WhatsApp</strong>
+                    <p>Elige tu plato kawaii favorito o pide un Combo Manga.</p>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <span class="step-num">02</span>
+                  <div>
+                    <strong>Escoge un tomo de nuestra estantería</strong>
+                    <p>Tenemos géneros Shōnen, Shōjo, Slice of Life, Isekai y clásicos.</p>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <span class="step-num">03</span>
+                  <div>
+                    <strong>Disfruta tu comida con sello kawaii</strong>
+                    <p>Puedes seguir leyendo cómodamente mientras saboreas tu pedido.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="manga-cta-row">
+                <a href="#menu" class="btn btn-secondary">Ver Combo Otaku + Manga</a>
+                <a href="https://wa.me/67992051?text=Hola%20SAKURA%20Maid%20Caf%C3%A9%20%F0%9F%93%9A%20Quiero%20consultar%20qu%C3%A9%20mangas%20tienen%20disponibles%20hoy%20y%20reservar%20mesa." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                  💬 Consultar Títulos (67992051)
+                </a>
+              </div>
+            </div>
+
+            <div class="manga-shelf-widget">
+              <div class="shelf-header">
+                <h3>✨ Explora la Estantería del Local</h3>
+                <p>Selecciona un género para ver ejemplos disponibles en mesa:</p>
+              </div>
+
+              <div class="genre-tabs" id="mangaGenreTabs">
+                <button type="button" class="genre-tab active" data-genre="shonen">🔥 Shōnen</button>
+                <button type="button" class="genre-tab" data-genre="shojo">🌸 Shōjo</button>
+                <button type="button" class="genre-tab" data-genre="slice">🍵 Slice of Life</button>
+                <button type="button" class="genre-tab" data-genre="isekai">✨ Fantasía</button>
+              </div>
+
+              <div class="manga-cards-list" id="mangaShelfList">
+                <!-- Generado dinámicamente -->
+              </div>
+
+              <div class="manga-rules-note">
+                <span>🎀 Regla kawaii:</span> Cuida las páginas con manos limpias antes de comer tus snacks y devuelve los tomos al estante al salir.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Croquis de Ubicación + Horarios + WhatsApp Directo -->
+    <section class="location-section" id="ubicacion">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-jp-label">アクセス • CROQUIS DE UBICACIÓN</span>
+          <h2 class="section-title">¿Cómo llegar a SAKURA Maid Café?</h2>
+          <p class="section-desc">
+            Usa nuestro croquis ilustrado kawaii para ubicarnos fácilmente. Toca los puntos de referencia para ver la ruta sugerida.
+          </p>
+        </div>
+
+        <div class="location-grid">
+          <!-- Croquis Interactivo Ilustrado en SVG -->
+          <div class="croquis-card anime-window">
+            <div class="window-titlebar">
+              <div class="window-dots">
+                <span class="dot dot-pink"></span>
+                <span class="dot dot-blue"></span>
+                <span class="dot dot-white"></span>
+              </div>
+              <span class="window-title">MAPA_CROQUIS.svg — Zona Centro Otaku</span>
+              <span class="window-jp">地図</span>
+            </div>
+
+            <div class="croquis-wrapper">
+              <svg viewBox="0 0 680 440" class="croquis-svg" role="img" aria-label="Croquis ilustrado de ubicación de SAKURA Maid Café">
+                <defs>
+                  <pattern id="gridPattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E4F4FF" stroke-width="1"/>
+                  </pattern>
+                  <filter id="softDrop" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#FF99C8" flood-opacity="0.28"/>
+                  </filter>
+                </defs>
+
+                <!-- Fondo del mapa -->
+                <rect width="680" height="440" rx="20" fill="#FAFDFF"/>
+                <rect width="680" height="440" rx="20" fill="url(#gridPattern)"/>
+
+                <!-- Zonas de manzanas / parques pastel -->
+                <rect x="44" y="42" width="170" height="118" rx="18" fill="#FFF2F8" stroke="#FFD1E6" stroke-width="2"/>
+                <rect x="256" y="42" width="180" height="118" rx="18" fill="#EAF8FF" stroke="#BBE7FF" stroke-width="2"/>
+                <rect x="478" y="42" width="158" height="118" rx="18" fill="#FFF2F8" stroke="#FFD1E6" stroke-width="2"/>
+
+                <rect x="44" y="206" width="170" height="175" rx="18" fill="#EAF8FF" stroke="#BBE7FF" stroke-width="2"/>
+                <rect x="256" y="206" width="180" height="175" rx="18" fill="#FFF7FB" stroke="#FFB8DA" stroke-width="2.5"/>
+                <rect x="478" y="206" width="158" height="175" rx="18" fill="#EAF8FF" stroke="#BBE7FF" stroke-width="2"/>
+
+                <!-- Parque de los Cerezos -->
+                <circle cx="105" cy="96" r="24" fill="#FFD1E6"/>
+                <circle cx="145" cy="108" r="20" fill="#FFB5D8"/>
+                <circle cx="124" cy="76" r="18" fill="#FFE0EE"/>
+                <text x="129" y="144" text-anchor="middle" class="map-zone-text">🌸 Plaza Sakura</text>
+
+                <!-- Calles principales (celeste suave / blanco) -->
+                <rect x="0" y="164" width="680" height="38" fill="#FFFFFF" stroke="#BBE7FF" stroke-width="2"/>
+                <line x1="0" y1="183" x2="680" y2="183" stroke="#9CD9FF" stroke-width="2" stroke-dasharray="10 8"/>
+
+                <rect x="216" y="0" width="38" height="440" fill="#FFFFFF" stroke="#BBE7FF" stroke-width="2"/>
+                <line x1="235" y1="0" x2="235" y2="440" stroke="#9CD9FF" stroke-width="2" stroke-dasharray="10 8"/>
+
+                <rect x="438" y="0" width="38" height="440" fill="#FFFFFF" stroke="#BBE7FF" stroke-width="2"/>
+                <line x1="457" y1="0" x2="457" y2="440" stroke="#9CD9FF" stroke-width="2" stroke-dasharray="10 8"/>
+
+                <!-- Nombres de calles -->
+                <g class="street-labels">
+                  <rect x="275" y="170" width="145" height="24" rx="12" fill="#E3F5FF" stroke="#8CD4FF" stroke-width="1.5"/>
+                  <text x="347" y="186" text-anchor="middle" class="map-street-text">Av. Principal Sakura</text>
+
+                  <text x="235" y="305" text-anchor="middle" transform="rotate(-90 235 305)" class="map-street-text">Calle Akihabara</text>
+                  <text x="457" y="305" text-anchor="middle" transform="rotate(-90 457 305)" class="map-street-text">Pasaje Shibuya</text>
+                </g>
+
+                <!-- Rutas animadas hacia la tienda (cambia visibilidad con JS) -->
+                <path id="routeFromStop" d="M 129 295 L 235 295 L 235 268 L 320 268" fill="none" stroke="#FF75B5" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6" class="map-route-path active-route"/>
+                <path id="routeFromMall" d="M 556 105 L 457 105 L 457 268 L 372 268" fill="none" stroke="#53B8F2" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6" class="map-route-path"/>
+                <path id="routeFromPark" d="M 346 105 L 346 245" fill="none" stroke="#FF75B5" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6" class="map-route-path"/>
+
+                <!-- Puntos de referencia interactivos -->
+                <g class="map-landmark" data-landmark="stop" tabindex="0" role="button" aria-label="Parada de Transporte Central">
+                  <rect x="65" y="266" width="128" height="58" rx="14" fill="#FFFFFF" stroke="#7CCDF8" stroke-width="2"/>
+                  <text x="129" y="290" text-anchor="middle" class="landmark-icon">🚌</text>
+                  <text x="129" y="310" text-anchor="middle" class="landmark-title">Parada Central</text>
+                </g>
+
+                <g class="map-landmark" data-landmark="park" tabindex="0" role="button" aria-label="Estacionamiento Público">
+                  <rect x="282" y="68" width="128" height="58" rx="14" fill="#FFFFFF" stroke="#7CCDF8" stroke-width="2"/>
+                  <text x="346" y="92" text-anchor="middle" class="landmark-icon">🅿️</text>
+                  <text x="346" y="112" text-anchor="middle" class="landmark-title">Parqueo Público</text>
+                </g>
+
+                <g class="map-landmark" data-landmark="mall" tabindex="0" role="button" aria-label="Galería Geek y Tiendas">
+                  <rect x="494" y="68" width="126" height="58" rx="14" fill="#FFFFFF" stroke="#FF99C8" stroke-width="2"/>
+                  <text x="557" y="92" text-anchor="middle" class="landmark-icon">🎮</text>
+                  <text x="557" y="112" text-anchor="middle" class="landmark-title">Galería Geek</text>
+                </g>
+
+                <!-- Edificio Estantería Manga / Local SAKURA Maid Café -->
+                <g filter="url(#softDrop)">
+                  <rect x="280" y="226" width="132" height="114" rx="20" fill="#FFE6F2" stroke="#FF75B5" stroke-width="3"/>
+                  <!-- Toldo miniatura del local -->
+                  <path d="M 284 246 Q 297 256 310 246 Q 323 256 336 246 Q 349 256 362 246 Q 375 256 388 246 Q 400 256 408 246 L 408 228 Q 408 226 405 226 L 287 226 Q 284 226 284 228 Z" fill="#8CD4FF"/>
+                  <!-- Pin animado de Sakura -->
+                  <circle cx="346" cy="274" r="22" fill="#FF8BB8" opacity="0.24">
+                    <animate attributeName="r" values="18;28;18" dur="2.2s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.35;0.05;0.35" dur="2.2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="346" cy="274" r="14" fill="#FF66AA" stroke="#FFFFFF" stroke-width="3"/>
+                  <text x="346" y="279" text-anchor="middle" font-size="13">🌸</text>
+                  <text x="346" y="308" text-anchor="middle" class="cafe-pin-title">SAKURA</text>
+                  <text x="346" y="324" text-anchor="middle" class="cafe-pin-sub">Maid Café &amp; Manga</text>
+                </g>
+
+                <!-- Brújula kawaii -->
+                <g transform="translate(560, 292)">
+                  <circle cx="0" cy="0" r="34" fill="#FFFFFF" stroke="#BBE7FF" stroke-width="2"/>
+                  <polygon points="0,-24 6,-4 0,-8 -6,-4" fill="#FF75B5"/>
+                  <polygon points="0,24 6,4 0,8 -6,4" fill="#A6E1FF"/>
+                  <text x="0" y="-26" text-anchor="middle" font-size="10" font-weight="800" fill="#3D2C45">N</text>
+                  <text x="0" y="33" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5B73">S</text>
+                </g>
+              </svg>
+
+              <div class="croquis-route-tip" id="croquisRouteTip">
+                <span>📍</span>
+                <p><strong>Desde Parada Central:</strong> Camina 2 cuadras por Calle Akihabara hasta la esquina Av. Principal Sakura (2 min).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta lateral con datos de ubicación y botones -->
+          <div class="location-details-card">
+            <div class="info-block">
+              <span class="pill-badge badge-blue">🏠 Dirección del Local (Demo)</span>
+              <h3>Av. Principal Sakura #108, esq. Calle Akihabara</h3>
+              <p class="muted-note">Frente a la Plaza Sakura • Zona céntrica y de fácil acceso. *(Puedes editar esta dirección exacta con los datos de tu local).*</p>
+            </div>
+
+            <div class="info-grid-mini">
+              <div class="mini-card">
+                <span class="mini-icon">🕒</span>
+                <div>
+                  <strong>Horario Kawaii</strong>
+                  <p>Mar - Dom: 12:00 a 21:30</p>
+                </div>
+              </div>
+              <div class="mini-card">
+                <span class="mini-icon">📚</span>
+                <div>
+                  <strong>Lectura Manga</strong>
+                  <p>Gratis mientras esperas</p>
+                </div>
+              </div>
+              <div class="mini-card">
+                <span class="mini-icon">📱</span>
+                <div>
+                  <strong>WhatsApp Pedidos</strong>
+                  <p>67992051</p>
+                </div>
+              </div>
+              <div class="mini-card">
+                <span class="mini-icon">🥡</span>
+                <div>
+                  <strong>Modalidad</strong>
+                  <p>En local &amp; Para llevar</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="landmark-buttons">
+              <span class="landmark-btn-label">Ver ruta rápida en el croquis:</span>
+              <div class="route-btn-group">
+                <button type="button" class="route-pill active" data-target-route="stop">🚌 Parada Central</button>
+                <button type="button" class="route-pill" data-target-route="park">🅿️ Parqueo</button>
+                <button type="button" class="route-pill" data-target-route="mall">🎮 Galería Geek</button>
+              </div>
+            </div>
+
+            <div class="location-cta-stack">
+              <a href="https://wa.me/67992051?text=Hola%20SAKURA%20Maid%20Caf%C3%A9%20%F0%9F%93%8D%20%C2%BFMe%20pueden%20enviar%20la%20ubicaci%C3%B3n%20en%20tiempo%20real%20por%20favor%3F" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-full">
+                💬 Pedir ubicación exacta por WhatsApp (67992051)
+              </a>
+              <button type="button" class="btn btn-secondary btn-full" id="copyAddressBtn">
+                📋 Copiar dirección y teléfono
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Redes Sociales -->
+    <section class="social-section" id="redes">
+      <div class="container">
+        <div class="social-box">
+          <div class="social-header">
+            <span class="section-jp-label">公式SNS • REDES SOCIALES</span>
+            <h2>¡Síguenos y comparte tu momento otaku!</h2>
+            <p>
+              Etiquétanos en tus fotos con tu omurice dibujado, tu parfait celeste o el manga que estás leyendo en el café.
+            </p>
+          </div>
+
+          <div class="social-cards">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-card social-ig">
+              <span class="social-emoji" aria-hidden="true">📸</span>
+              <div>
+                <strong>Instagram</strong>
+                <span>@sakura.maidcafe</span>
+              </div>
+              <span class="social-arrow">↗</span>
+            </a>
+
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-card social-tt">
+              <span class="social-emoji" aria-hidden="true">🎵</span>
+              <div>
+                <strong>TikTok</strong>
+                <span>@sakuramaidcafe</span>
+              </div>
+              <span class="social-arrow">↗</span>
+            </a>
+
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-card social-fb">
+              <span class="social-emoji" aria-hidden="true">🎀</span>
+              <div>
+                <strong>Facebook</strong>
+                <span>SAKURA Maid Café</span>
+              </div>
+              <span class="social-arrow">↗</span>
+            </a>
+
+            <a href="https://wa.me/67992051?text=Hola%20SAKURA%20Maid%20Caf%C3%A9%20%F0%9F%8C%B8%20Vengo%20de%20su%20p%C3%A1gina%20web%20demo." target="_blank" rel="noopener noreferrer" class="social-card social-wa">
+              <span class="social-emoji" aria-hidden="true">💬</span>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>+ 67992051</span>
+              </div>
+              <span class="social-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>🌸 SAKURA maid cafe</strong>
+        <p>Comida otaku kawaii, postres pastel y lectura de mangas gratuita mientras esperas tu pedido.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#menu">Menú</a>
+        <a href="#manga-lounge">Mangas</a>
+        <a href="#ubicacion">Croquis</a>
+        <a href="https://wa.me/67992051" target="_blank" rel="noopener noreferrer">WhatsApp: 67992051</a>
+      </div>
+      <p class="footer-copy">© 2026 SAKURA Maid Café — Interfaz Demo Kawaii hecho por sr greda 🌸</p>
+    </div>
+  </footer>
+
+  <!-- Botones Flotantes (WhatsApp + Carrito rápido móvil/desktop) -->
+  <div class="floating-dock">
+    <a href="https://wa.me/67992051?text=Hola%20SAKURA%20Maid%20Caf%C3%A9%20%F0%9F%8C%B8%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener noreferrer" class="float-btn float-whatsapp" aria-label="Chatear por WhatsApp al 67992051">
+      <span class="float-icon">💬</span>
+      <span class="float-text">WhatsApp 67992051</span>
+    </a>
+    <button type="button" class="float-btn float-cart" id="floatingCartBtn" aria-label="Ver carrito de compras">
+      <span class="float-icon">🛍️</span>
+      <span class="float-text">Mi Pedido (<span id="floatingCartCount">0</span>)</span>
+    </button>
+  </div>
+
+  <!-- Modal Detalle de Platillo -->
+  <div class="modal-backdrop hidden" id="itemModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalItemTitle">
+    <div class="item-modal anime-window">
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <span class="dot dot-pink"></span>
+          <span class="dot dot-blue"></span>
+          <span class="dot dot-white"></span>
+        </div>
+        <span class="window-title">DETALLE DEL PLATILLO</span>
+        <button type="button" class="close-modal-btn" id="closeItemModalBtn" aria-label="Cerrar ventana">✕</button>
+      </div>
+      <div class="item-modal-body" id="itemModalBody">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmación Demo (Ticket Kawaii) -->
+  <div class="modal-backdrop hidden" id="demoOrderModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="demoOrderTitle">
+    <div class="item-modal anime-window demo-ticket-modal">
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <span class="dot dot-pink"></span>
+          <span class="dot dot-blue"></span>
+          <span class="dot dot-white"></span>
+        </div>
+        <span class="window-title">TICKET_SAKURA.txt — Pedido Demo</span>
+        <button type="button" class="close-modal-btn" id="closeDemoModalBtn" aria-label="Cerrar ticket demo">✕</button>
+      </div>
+      <div class="demo-ticket-body" id="demoOrderBody">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer Carrito de Compras -->
+  <div class="cart-backdrop hidden" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+    <div class="cart-drawer-header">
+      <div>
+        <span class="cart-jp">お会計 • TU PEDIDO</span>
+        <h3>🛍️ Carrito Sakura</h3>
+      </div>
+      <button type="button" class="close-cart-btn" id="closeCartBtn" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <div class="cart-manga-tip">
+      <span>📚</span>
+      <p>Si eliges consumir en local, ¡puedes leer nuestros mangas gratis mientras preparamos tu pedido!</p>
+    </div>
+
+    <div class="cart-items-container" id="cartItemsContainer">
+      <!-- Renderizado dinámico -->
+    </div>
+
+    <div class="cart-drawer-footer" id="cartFooter">
+      <div class="cart-options">
+        <label class="field-label" for="customerNameInput">Tu nombre (para llamarte en mesa / pedido):</label>
+        <input type="text" id="customerNameInput" class="kawaii-input" placeholder="Ej. Mei / Alex" />
+
+        <label class="field-label" for="serviceModeSelect">Modalidad:</label>
+        <select id="serviceModeSelect" class="kawaii-input">
+          <option value="En el local (con lectura de manga 📚)">En el local (con lectura de manga 📚)</option>
+          <option value="Para llevar (Pick-up 🛍️)">Para llevar (Pick-up 🛍️)</option>
+          <option value="Delivery 🛵">Delivery 🛵</option>
+        </select>
+
+        <label class="field-label" for="orderNotesInput">Nota o dedicatoria kawaii:</label>
+        <input type="text" id="orderNotesInput" class="kawaii-input" placeholder="Ej. Dibujo de gatito en el omurice ♥" />
+      </div>
+
+      <div class="cart-summary-row">
+        <span>Total estimado:</span>
+        <strong id="cartTotalPrice">$0.00</strong>
+      </div>
+
+      <div class="cart-actions-stack">
+        <button type="button" class="btn btn-whatsapp btn-full" id="checkoutWhatsappBtn">
+          💬 Enviar Pedido por WhatsApp (67992051)
+        </button>
+        <div class="cart-secondary-actions">
+          <button type="button" class="btn btn-primary" id="demoConfirmBtn">
+            ✨ Confirmar Demo
+          </button>
+          <button type="button" class="btn btn-ghost" id="clearCartBtn">
+            🗑️ Vaciar
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast de notificaciones kawaii -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
