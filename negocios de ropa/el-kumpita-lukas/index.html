@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>el.kumpita.lukas — Streetwear Urbano &amp; Palmeras | Bolivia</title>
+  <meta name="description" content="Tienda de ropa urbana el.kumpita.lukas. Diseño urbanismo y palmeras en negro, blanco y verde. Pedidos directos por WhatsApp +591 67992051." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Subtle architectural grid & palm shadow layer -->
+  <div class="urban-bg-grid" aria-hidden="true"></div>
+
+  <!-- Top Urban Marquee Banner -->
+  <div class="top-ticker" role="region" aria-label="Anuncios de la tienda">
+    <div class="ticker-track">
+      <span>EL.KUMPITA.LUKAS</span>
+      <span class="ticker-dot">✦</span>
+      <span>DISEÑO URBANISMO &amp; PALMERAS</span>
+      <span class="ticker-dot">✦</span>
+      <span>PALETA NEGRO · BLANCO · VERDE</span>
+      <span class="ticker-dot">✦</span>
+      <span>PEDIDOS DIRECTOS WHATSAPP +591 67992051</span>
+      <span class="ticker-dot">✦</span>
+      <span>ENVÍOS A TODA BOLIVIA</span>
+      <span class="ticker-dot">✦</span>
+      <span>EL.KUMPITA.LUKAS</span>
+      <span class="ticker-dot">✦</span>
+      <span>DISEÑO URBANISMO &amp; PALMERAS</span>
+      <span class="ticker-dot">✦</span>
+      <span>PALETA NEGRO · BLANCO · VERDE</span>
+      <span class="ticker-dot">✦</span>
+      <span>PEDIDOS DIRECTOS WHATSAPP +591 67992051</span>
+      <span class="ticker-dot">✦</span>
+      <span>ENVÍOS A TODA BOLIVIA</span>
+      <span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- Header / Sticky Navigation -->
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand-logo" aria-label="Inicio el.kumpita.lukas">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="44" height="44" rx="8" fill="#0B0F0D" stroke="#22C55E" stroke-width="2" />
+            <!-- Urban grid lines -->
+            <path d="M2 34H46M14 2V46" stroke="#22C55E" stroke-opacity="0.22" stroke-width="1" />
+            <!-- Stylized Palm Tree -->
+            <path d="M24 37C24.5 29 25.8 23.5 28 18" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" />
+            <path d="M28 18C23.5 14.2 17.2 14.5 13 18.2C17.8 17.5 22.8 18.4 27.6 19.6" fill="#22C55E" />
+            <path d="M28 18C24.5 12.2 29.8 8.5 35.5 10.8C31.2 12.2 29.2 15 28.4 18.4" fill="#22C55E" />
+            <path d="M28 18.2C32.5 15.8 38.2 17.2 40.5 22C36 19.8 31.8 19.5 28 19.6" fill="#16A34A" />
+            <path d="M27.6 18.4C22.2 19.2 17.8 22.4 15.8 26.8C19.6 23.5 23.5 21.4 27.6 20.4" fill="#16A34A" />
+            <path d="M16 37H35" stroke="#22C55E" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>el.kumpita.lukas</strong>
+          <small>URBAN · PALM · BO</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#ubicacion">Croquis</a>
+        <a href="#redes">Redes</a>
+      </nav>
+
+      <div class="header-actions">
+        <a
+          href="https://wa.me/59167992051?text=Hola%20el.kumpita.lukas!%20Quiero%20consultar%20sobre%20sus%20prendas%20urbanas."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-whatsapp-outline btn-sm hide-mobile"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.76 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.85 16.12C17.6 16.82 16.41 17.45 15.83 17.53C15.31 17.61 14.66 17.64 13.94 17.41C13.5 17.27 12.93 17.08 12.21 16.77C9.16 15.45 7.17 12.38 7.02 12.18C6.87 11.98 5.78 10.53 5.78 9.04C5.78 7.55 6.56 6.82 6.84 6.51C7.12 6.2 7.45 6.13 7.66 6.13C7.87 6.13 8.07 6.13 8.25 6.14C8.44 6.15 8.7 6.07 8.95 6.68C9.21 7.3 9.83 8.81 9.91 8.97C9.99 9.13 10.04 9.31 9.93 9.51C9.83 9.71 9.78 9.84 9.62 10.02C9.46 10.2 9.29 10.42 9.15 10.56C8.99 10.72 8.83 10.89 9.01 11.21C9.2 11.52 9.83 12.57 10.78 13.41C12 14.5 13.03 14.84 13.34 15C13.66 15.16 13.84 15.13 14.03 14.92C14.21 14.71 14.82 13.99 15.03 13.68C15.24 13.37 15.46 13.42 15.75 13.53C16.05 13.63 17.62 14.41 17.94 14.57C18.25 14.73 18.46 14.81 18.54 14.94C18.61 15.08 18.61 15.72 17.85 16.12Z" />
+          </svg>
+          <span>67992051</span>
+        </a>
+
+        <button class="btn-cart" id="openCartBtn" type="button" aria-label="Abrir carrito de compras">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 7h12l-1 13H7L6 7z" />
+            <path d="M9 7V5a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span>Carrito</span>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Menú móvil" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="#catalogo">Catálogo (5 Prendas)</a>
+      <a href="#ubicacion">Croquis de Ubicación</a>
+      <a href="#redes">Redes Sociales</a>
+      <a
+        href="https://wa.me/59167992051?text=Hola%20el.kumpita.lukas!%20Quiero%20consultar%20sobre%20las%20prendas."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-wa-link"
+      >
+        WhatsApp Directo: +591 67992051
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <!-- Decorative palm architectural silhouette -->
+      <div class="hero-palm-watermark" aria-hidden="true">
+        <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M180 350C182 260 198 185 224 118" stroke="currentColor" stroke-width="10" stroke-linecap="round" />
+          <path d="M224 118C165 72 88 85 45 136C106 121 166 125 220 135" fill="currentColor" fill-opacity="0.22" />
+          <path d="M224 118C194 48 258 14 316 42C269 62 242 90 228 122" fill="currentColor" fill-opacity="0.26" />
+          <path d="M224 120C274 96 330 116 350 172C302 145 262 135 222 136" fill="currentColor" fill-opacity="0.18" />
+          <path d="M220 124C160 138 110 176 88 228C136 186 176 160 220 146" fill="currentColor" fill-opacity="0.18" />
+          <path d="M224 118C152 60 116 24 152 12C184 36 208 76 224 118Z" fill="currentColor" fill-opacity="0.15" />
+        </svg>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="urban-tag-row">
+            <span class="urban-chip">
+              <span class="pulse-dot"></span>
+              DROP ACTIVO · SECTOR URBANO
+            </span>
+            <span class="coord-tag">BO // +591 67992051</span>
+          </div>
+
+          <h1 class="hero-title">
+            URBANISMO,<br />
+            CONCRETO Y<br />
+            <span class="accent-palm">PALMERAS.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Bienvenido a <strong>el.kumpita.lukas</strong>. Streetwear diseñado bajo códigos arquitectónicos de la ciudad: contraste limpio en <strong>negro, blanco y verde</strong>, cortes oversize y esencia tropical urbana en cada prenda.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#catalogo" class="btn btn-primary">
+              <span>Ver 5 Prendas Drop</span>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a
+              href="https://wa.me/59167992051?text=Hola%20el.kumpita.lukas!%20Vi%20su%20p%C3%A1gina%20web%20y%20quiero%20hacer%20una%20consulta."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.76 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.85 16.12C17.6 16.82 16.41 17.45 15.83 17.53C15.31 17.61 14.66 17.64 13.94 17.41C13.5 17.27 12.93 17.08 12.21 16.77C9.16 15.45 7.17 12.38 7.02 12.18C6.87 11.98 5.78 10.53 5.78 9.04C5.78 7.55 6.56 6.82 6.84 6.51C7.12 6.2 7.45 6.13 7.66 6.13C7.87 6.13 8.07 6.13 8.25 6.14C8.44 6.15 8.7 6.07 8.95 6.68C9.21 7.3 9.83 8.81 9.91 8.97C9.99 9.13 10.04 9.31 9.93 9.51C9.83 9.71 9.78 9.84 9.62 10.02C9.46 10.2 9.29 10.42 9.15 10.56C8.99 10.72 8.83 10.89 9.01 11.21C9.2 11.52 9.83 12.57 10.78 13.41C12 14.5 13.03 14.84 13.34 15C13.66 15.16 13.84 15.13 14.03 14.92C14.21 14.71 14.82 13.99 15.03 13.68C15.24 13.37 15.46 13.42 15.75 13.53C16.05 13.63 17.62 14.41 17.94 14.57C18.25 14.73 18.46 14.81 18.54 14.94C18.61 15.08 18.61 15.72 17.85 16.12Z" />
+              </svg>
+              <span>Pedir por WhatsApp</span>
+            </a>
+
+            <a href="#ubicacion" class="btn btn-ghost">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z" />
+                <circle cx="12" cy="11" r="2.2" />
+              </svg>
+              <span>Ver Croquis</span>
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-box">
+              <span class="metric-num">05</span>
+              <span class="metric-label">Prendas Seleccionadas</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">3</span>
+              <span class="metric-label">Tonos: Negro · Blanco · Verde</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">24/7</span>
+              <span class="metric-label">Pedidos WhatsApp 67992051</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="architectural-frame">
+            <div class="frame-topbar">
+              <span>LOOKBOOK // EKL-2026</span>
+              <span class="frame-coords">PALM-GRID v1.0</span>
+            </div>
+            <div class="hero-image-wrap">
+              <img
+                src="https://i.pinimg.com/736x/d4/d7/bb/d4d7bb8032072bb4a1e31f2b3903c62a.jpg"
+                alt="Editorial urbano de el.kumpita.lukas con sombras de palmera y estética concreto"
+                class="hero-img"
+              />
+              <div class="img-fallback" hidden>
+                <span>EL.KUMPITA.LUKAS · URBANISMO &amp; PALMERAS</span>
+              </div>
+              <div class="palm-badge-overlay">
+                <svg class="palm-mini-svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <path d="M16 27c.5-6 1.5-10 3.2-14" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M19 13c-4-3-9-2-12 1 4-.5 8 0 12 1z" fill="#22C55E"/>
+                  <path d="M19 13c-2-5 3-8 8-6-4 1-6 3-7 6z" fill="#22C55E"/>
+                  <path d="M19 13c4-2 8 0 10 4-4-2-7-2-10-2z" fill="#16A34A"/>
+                </svg>
+                <div>
+                  <strong>Identidad Palma Urbana</strong>
+                  <span>Concreto limpio + verde esmeralda</span>
+                </div>
+              </div>
+            </div>
+            <div class="frame-bottombar">
+              <span>+ DISEÑO ARQUITECTÓNICO</span>
+              <span>S / M / L / XL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Urban Principles / Brand Pillars -->
+    <section class="pillars-strip" aria-label="Identidad de marca">
+      <div class="container pillars-grid">
+        <div class="pillar-item">
+          <span class="pillar-index">01</span>
+          <div>
+            <h3>Estética Urbanismo</h3>
+            <p>Líneas rectas, módulos de concreto y cortes modernos pensados para la calle.</p>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-index">02</span>
+          <div>
+            <h3>Sello de Palmeras</h3>
+            <p>Nuestro emblema de palmera fusiona la energía urbana con frescura tropical.</p>
+          </div>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-index">03</span>
+          <div>
+            <h3>Compra Ágil por WhatsApp</h3>
+            <p>Arma tu carrito o consulta talla al instante directo al +591 67992051.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog & Interactive Filters Section -->
+    <section class="catalog-section" id="catalogo">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">CATÁLOGO URBANO · DROP DE EJEMPLO</span>
+            <h2 class="section-title">5 Prendas <span>el.kumpita.lukas</span></h2>
+          </div>
+          <p class="section-desc">
+            Filtra por categoría, color, talla o busca por estilo. Selecciona tu talla en cada prenda para agregar al carrito o enviar tu consulta directo a nuestro WhatsApp.
+          </p>
+        </div>
+
+        <!-- Filter Panel -->
+        <div class="filter-panel" aria-label="Filtros del catálogo">
+          <div class="filter-row-top">
+            <div class="search-box">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M20 20l-3.5-3.5" />
+              </svg>
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Buscar prenda, corte, detalle (ej. oversize, cargo, palma)..."
+                aria-label="Buscar prenda"
+              />
+            </div>
+
+            <div class="sort-box">
+              <label for="sortSelect">Ordenar:</label>
+              <select id="sortSelect">
+                <option value="featured">Destacados</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+                <option value="name-asc">Nombre: A - Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-groups">
+            <!-- Category Filter -->
+            <div class="filter-group">
+              <span class="filter-label">Categoría</span>
+              <div class="filter-pills" id="categoryFilters" role="group" aria-label="Filtrar por categoría">
+                <button type="button" class="filter-pill active" data-category="todas">Todas (5)</button>
+                <button type="button" class="filter-pill" data-category="Poleras">Poleras (2)</button>
+                <button type="button" class="filter-pill" data-category="Hoodies">Hoodies (1)</button>
+                <button type="button" class="filter-pill" data-category="Pantalones">Pantalones (1)</button>
+                <button type="button" class="filter-pill" data-category="Chaquetas">Chaquetas (1)</button>
+              </div>
+            </div>
+
+            <!-- Color Filter -->
+            <div class="filter-group">
+              <span class="filter-label">Color</span>
+              <div class="filter-pills" id="colorFilters" role="group" aria-label="Filtrar por color">
+                <button type="button" class="filter-pill active" data-color="todos">Todos</button>
+                <button type="button" class="filter-pill" data-color="Negro">
+                  <span class="swatch swatch-black"></span> Negro
+                </button>
+                <button type="button" class="filter-pill" data-color="Blanco">
+                  <span class="swatch swatch-white"></span> Blanco
+                </button>
+                <button type="button" class="filter-pill" data-color="Verde">
+                  <span class="swatch swatch-green"></span> Verde
+                </button>
+              </div>
+            </div>
+
+            <!-- Size Filter -->
+            <div class="filter-group">
+              <span class="filter-label">Talla</span>
+              <div class="filter-pills" id="sizeFilters" role="group" aria-label="Filtrar por talla">
+                <button type="button" class="filter-pill active" data-size="todas">Todas</button>
+                <button type="button" class="filter-pill" data-size="S">S</button>
+                <button type="button" class="filter-pill" data-size="M">M</button>
+                <button type="button" class="filter-pill" data-size="L">L</button>
+                <button type="button" class="filter-pill" data-size="XL">XL</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-status-bar">
+            <span id="resultsCount">Mostrando <strong>5</strong> de 5 prendas</span>
+            <button type="button" class="btn-reset-filters" id="resetFiltersBtn">
+              Limpiar filtros
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="products-grid" id="productsGrid"></div>
+
+        <!-- Empty State -->
+        <div class="empty-catalog" id="emptyCatalog" hidden>
+          <svg class="empty-palm" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" stroke="#22C55E" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="4 4" />
+            <path d="M32 48c.5-10 2-17 4.5-24" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M36 24c-6-4-13-3-18 1 5.5-.8 11.5 0 17.5 1.5" fill="#22C55E" />
+            <path d="M36 24c-3-7 3-12 11-9-5 1.5-8 4.8-9.5 9" fill="#22C55E" />
+            <path d="M36 24.5c5.5-2.5 12-.5 14.5 5-5-2.5-9.8-3-14.5-3" fill="#16A34A" />
+          </svg>
+          <h3>Sin coincidencias en el drop</h3>
+          <p>Ninguna prenda cumple con todos los filtros seleccionados. Prueba limpiando los filtros.</p>
+          <button type="button" class="btn btn-primary" id="emptyResetBtn">Ver las 5 prendas</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Urban Location Croquis Section (Light Contrast Architectural Blueprint) -->
+    <section class="location-section" id="ubicacion">
+      <div class="container">
+        <div class="section-header light-header">
+          <div>
+            <span class="section-kicker kicker-dark">URBANISMO &amp; ACCESO DIRECTO</span>
+            <h2 class="section-title title-dark">Croquis de <span>Ubicación</span></h2>
+          </div>
+          <p class="section-desc desc-dark">
+            Plano esquemático de referencia urbana. Haz clic en los puntos del croquis para ver referencias, cambiar de vista o pedir nuestra ubicación exacta por WhatsApp.
+          </p>
+        </div>
+
+        <div class="croquis-layout">
+          <!-- Interactive SVG Architectural Street Map -->
+          <div class="croquis-board" id="croquisBoard">
+            <div class="croquis-toolbar">
+              <div class="croquis-badge-bar">
+                <span class="blueprint-code">PLANO // EKL-URB-01</span>
+                <span class="blueprint-scale">ESCALA DEMO 1:250</span>
+              </div>
+              <div class="croquis-controls">
+                <button type="button" class="croquis-ctrl-btn active" id="croquisLightBtn">Plano Día</button>
+                <button type="button" class="croquis-ctrl-btn" id="croquisDarkBtn">Plano Nocturno</button>
+              </div>
+            </div>
+
+            <div class="croquis-canvas-wrap">
+              <svg
+                class="croquis-svg"
+                viewBox="0 0 800 480"
+                role="img"
+                aria-label="Croquis urbano de ubicación de la tienda el.kumpita.lukas con calles, manzanas y palmeras"
+              >
+                <defs>
+                  <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-opacity="0.08" stroke-width="0.8" />
+                  </pattern>
+                  <pattern id="majorGrid" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <rect width="100" height="100" fill="url(#smallGrid)" />
+                    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="currentColor" stroke-opacity="0.14" stroke-width="1.2" />
+                  </pattern>
+                </defs>
+
+                <!-- Base Blueprint Grid -->
+                <rect width="800" height="480" class="map-bg" />
+                <rect width="800" height="480" fill="url(#majorGrid)" class="map-grid-lines" />
+
+                <!-- Urban City Blocks (Manzanas) -->
+                <rect x="45" y="45" width="190" height="125" rx="6" class="city-block" />
+                <rect x="305" y="45" width="210" height="125" rx="6" class="city-block" />
+                <rect x="585" y="45" width="170" height="125" rx="6" class="city-block" />
+
+                <!-- Green Park Block with Palm Trees -->
+                <rect x="45" y="245" width="190" height="175" rx="8" class="park-block" />
+                <text x="140" y="346" text-anchor="middle" class="block-label park-text">PARQUE DE</text>
+                <text x="140" y="364" text-anchor="middle" class="block-label park-text">LAS PALMERAS</text>
+
+                <!-- Main Store Block -->
+                <rect x="305" y="245" width="210" height="175" rx="6" class="city-block store-block" />
+                <rect x="330" y="268" width="95" height="62" rx="4" class="store-footprint" />
+                <text x="377" y="303" text-anchor="middle" class="store-footprint-label">TIENDA</text>
+
+                <!-- Right Block -->
+                <rect x="585" y="245" width="170" height="175" rx="6" class="city-block" />
+                <text x="670" y="338" text-anchor="middle" class="block-label">GALERÍA URBANA</text>
+
+                <!-- Horizontal Streets -->
+                <path d="M0 208H800" class="avenue-road" />
+                <path d="M0 208H800" class="avenue-centerline" />
+                <path d="M0 448H800" class="street-road" />
+
+                <!-- Vertical Streets -->
+                <path d="M270 0V480" class="avenue-road" />
+                <path d="M270 0V480" class="avenue-centerline" />
+                <path d="M550 0V480" class="street-road" />
+
+                <!-- Urban Roundabout / Rotonda -->
+                <circle cx="270" cy="208" r="32" class="roundabout-outer" />
+                <circle cx="270" cy="208" r="15" class="roundabout-inner" />
+
+                <!-- Suggested Walking Route to Store -->
+                <path
+                  d="M270 208 L377 208 L377 268"
+                  class="walking-route"
+                  fill="none"
+                />
+
+                <!-- Street Names -->
+                <text x="415" y="200" text-anchor="middle" class="street-name">AV. PRINCIPAL DEL URBANISMO</text>
+                <text x="135" y="200" text-anchor="middle" class="street-name">AV. LAS PALMERAS</text>
+                <text x="262" y="110" text-anchor="middle" transform="rotate(-90 262 110)" class="street-name">CALLE CONCRETO NORTE</text>
+                <text x="542" y="340" text-anchor="middle" transform="rotate(-90 542 340)" class="street-name">PASAJE TROPICAL</text>
+
+                <!-- Stylized Palm Tree Vectors in Park & Avenue -->
+                <g transform="translate(82, 278)" class="map-palm">
+                  <path d="M12 28C12 20 13 15 15 10" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M15 10C10 6 4 7 1 10C6 9 10 10 15 11" fill="#16A34A" />
+                  <path d="M15 10C13 4 19 1 24 4C20 5 17 7 15 10" fill="#22C55E" />
+                  <path d="M15 10C20 8 25 10 27 14C22 12 18 11 15 11" fill="#16A34A" />
+                </g>
+                <g transform="translate(178, 270)" class="map-palm">
+                  <path d="M12 28C12 20 13 15 15 10" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M15 10C10 6 4 7 1 10C6 9 10 10 15 11" fill="#16A34A" />
+                  <path d="M15 10C13 4 19 1 24 4C20 5 17 7 15 10" fill="#22C55E" />
+                  <path d="M15 10C20 8 25 10 27 14C22 12 18 11 15 11" fill="#16A34A" />
+                </g>
+                <g transform="translate(465, 290)" class="map-palm">
+                  <path d="M12 28C12 20 13 15 15 10" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M15 10C10 6 4 7 1 10C6 9 10 10 15 11" fill="#16A34A" />
+                  <path d="M15 10C13 4 19 1 24 4C20 5 17 7 15 10" fill="#22C55E" />
+                  <path d="M15 10C20 8 25 10 27 14C22 12 18 11 15 11" fill="#16A34A" />
+                </g>
+
+                <!-- Compass Rose -->
+                <g transform="translate(730, 78)" class="compass">
+                  <circle cx="0" cy="0" r="22" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.2" />
+                  <path d="M0 -18 L5 0 L0 -4 L-5 0 Z" fill="#16A34A" />
+                  <path d="M0 18 L5 0 L0 4 L-5 0 Z" fill="currentColor" fill-opacity="0.35" />
+                  <text x="0" y="-26" text-anchor="middle" class="compass-n">N</text>
+                </g>
+
+                <!-- Interactive Map Pins -->
+                <!-- Pin 1: Tienda el.kumpita.lukas -->
+                <g class="map-pin active-pin" data-pin="tienda" tabindex="0" role="button" aria-label="Pin de la tienda el.kumpita.lukas">
+                  <circle cx="377" cy="268" r="24" class="pin-pulse" />
+                  <circle cx="377" cy="268" r="14" class="pin-core" />
+                  <path d="M377 259 L377 277 M370 266 L377 259 L384 266" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <g transform="translate(320, 224)">
+                    <rect width="144" height="24" rx="4" class="pin-tag-bg" />
+                    <text x="72" y="16" text-anchor="middle" class="pin-tag-text">el.kumpita.lukas</text>
+                  </g>
+                </g>
+
+                <!-- Pin 2: Rotonda / Parada -->
+                <g class="map-pin" data-pin="parada" tabindex="0" role="button" aria-label="Pin Rotonda y Parada">
+                  <circle cx="270" cy="208" r="11" class="pin-secondary" />
+                  <text x="270" y="212" text-anchor="middle" class="pin-num">1</text>
+                </g>
+
+                <!-- Pin 3: Parque Palmeras -->
+                <g class="map-pin" data-pin="parque" tabindex="0" role="button" aria-label="Pin Parque de las Palmeras">
+                  <circle cx="140" cy="304" r="11" class="pin-secondary" />
+                  <text x="140" y="308" text-anchor="middle" class="pin-num">2</text>
+                </g>
+
+                <!-- Pin 4: Zona Parqueo / Galería -->
+                <g class="map-pin" data-pin="parqueo" tabindex="0" role="button" aria-label="Pin Galería y Parqueo">
+                  <circle cx="622" cy="285" r="11" class="pin-secondary" />
+                  <text x="622" y="289" text-anchor="middle" class="pin-num">3</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Interactive Reference Selector Bar under Map -->
+            <div class="croquis-legend">
+              <button type="button" class="legend-chip active" data-pin="tienda">
+                <span class="legend-dot main"></span> Local el.kumpita.lukas
+              </button>
+              <button type="button" class="legend-chip" data-pin="parada">
+                <span class="legend-dot">1</span> Rotonda Principal
+              </button>
+              <button type="button" class="legend-chip" data-pin="parque">
+                <span class="legend-dot">2</span> Parque Palmeras
+              </button>
+              <button type="button" class="legend-chip" data-pin="parqueo">
+                <span class="legend-dot">3</span> Galería / Parqueo
+              </button>
+            </div>
+          </div>
+
+          <!-- Location Info & Action Card -->
+          <aside class="location-card">
+            <div class="location-card-top">
+              <span class="demo-map-badge">CROQUIS INTERACTIVO DEMO</span>
+              <h3 id="pinDetailTitle">Showroom el.kumpita.lukas</h3>
+              <p id="pinDetailText">
+                Ubicado a media cuadra de la Rotonda Principal sobre la Av. Principal del Urbanismo, frente al Parque de las Palmeras.
+              </p>
+            </div>
+
+            <div class="location-details-list">
+              <div class="loc-detail-item">
+                <span class="loc-label">Referencia de Dirección</span>
+                <strong id="storeAddressText">Av. Principal del Urbanismo #104, Zona Central (Croquis editable)</strong>
+              </div>
+              <div class="loc-detail-item">
+                <span class="loc-label">Horarios de Atención</span>
+                <strong>Lunes a Sábado · 10:00 a 20:00 hrs</strong>
+              </div>
+              <div class="loc-detail-item">
+                <span class="loc-label">WhatsApp Oficial (Bolivia)</span>
+                <strong>+591 67992051</strong>
+              </div>
+              <div class="loc-detail-item">
+                <span class="loc-label">Envíos y Recojo</span>
+                <strong>Recojo en tienda · Delivery local · Envíos nacionales</strong>
+              </div>
+            </div>
+
+            <div class="location-actions">
+              <a
+                href="https://wa.me/59167992051?text=Hola%20el.kumpita.lukas!%20%C2%BFMe%20pueden%20enviar%20la%20ubicaci%C3%B3n%20exacta%20para%20llegar%20a%20la%20tienda%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp btn-block"
+              >
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.76 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.85 16.12C17.6 16.82 16.41 17.45 15.83 17.53C15.31 17.61 14.66 17.64 13.94 17.41C13.5 17.27 12.93 17.08 12.21 16.77C9.16 15.45 7.17 12.38 7.02 12.18C6.87 11.98 5.78 10.53 5.78 9.04C5.78 7.55 6.56 6.82 6.84 6.51C7.12 6.2 7.45 6.13 7.66 6.13C7.87 6.13 8.07 6.13 8.25 6.14C8.44 6.15 8.7 6.07 8.95 6.68C9.21 7.3 9.83 8.81 9.91 8.97C9.99 9.13 10.04 9.31 9.93 9.51C9.83 9.71 9.78 9.84 9.62 10.02C9.46 10.2 9.29 10.42 9.15 10.56C8.99 10.72 8.83 10.89 9.01 11.21C9.2 11.52 9.83 12.57 10.78 13.41C12 14.5 13.03 14.84 13.34 15C13.66 15.16 13.84 15.13 14.03 14.92C14.21 14.71 14.82 13.99 15.03 13.68C15.24 13.37 15.46 13.42 15.75 13.53C16.05 13.63 17.62 14.41 17.94 14.57C18.25 14.73 18.46 14.81 18.54 14.94C18.61 15.08 18.61 15.72 17.85 16.12Z" />
+                </svg>
+                <span>Pedir Ubicación Exacta por WhatsApp</span>
+              </a>
+
+              <button type="button" class="btn btn-dark-outline btn-block" id="copyAddressBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span>Copiar referencia de croquis</span>
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Networks Section -->
+    <section class="social-section" id="redes">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">COMUNIDAD &amp; REDES SOCIALES</span>
+            <h2 class="section-title">Conecta con <span>@el.kumpita.lukas</span></h2>
+          </div>
+          <p class="section-desc">
+            Sigue nuestros nuevos drops, combinaciones urbanas, stock en vivo y atención directa al WhatsApp +591 67992051.
+          </p>
+        </div>
+
+        <div class="social-grid">
+          <a
+            href="https://wa.me/59167992051?text=Hola%20el.kumpita.lukas!%20Quiero%20recibir%20atenci%C3%B3n%20por%20WhatsApp."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card social-whatsapp"
+          >
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.76 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.85 16.12C17.6 16.82 16.41 17.45 15.83 17.53C15.31 17.61 14.66 17.64 13.94 17.41C13.5 17.27 12.93 17.08 12.21 16.77C9.16 15.45 7.17 12.38 7.02 12.18C6.87 11.98 5.78 10.53 5.78 9.04C5.78 7.55 6.56 6.82 6.84 6.51C7.12 6.2 7.45 6.13 7.66 6.13C7.87 6.13 8.07 6.13 8.25 6.14C8.44 6.15 8.7 6.07 8.95 6.68C9.21 7.3 9.83 8.81 9.91 8.97C9.99 9.13 10.04 9.31 9.93 9.51C9.83 9.71 9.78 9.84 9.62 10.02C9.46 10.2 9.29 10.42 9.15 10.56C8.99 10.72 8.83 10.89 9.01 11.21C9.2 11.52 9.83 12.57 10.78 13.41C12 14.5 13.03 14.84 13.34 15C13.66 15.16 13.84 15.13 14.03 14.92C14.21 14.71 14.82 13.99 15.03 13.68C15.24 13.37 15.46 13.42 15.75 13.53C16.05 13.63 17.62 14.41 17.94 14.57C18.25 14.73 18.46 14.81 18.54 14.94C18.61 15.08 18.61 15.72 17.85 16.12Z" />
+              </svg>
+            </div>
+            <div class="social-meta">
+              <span class="social-tag">ATENCIÓN INMEDIATA</span>
+              <h3>WhatsApp</h3>
+              <p>+591 67992051 · Pedidos y consultas</p>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/el.kumpita.lukas/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card"
+          >
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+            <div class="social-meta">
+              <span class="social-tag">LOOKBOOK &amp; REELS</span>
+              <h3>Instagram</h3>
+              <p>@el.kumpita.lukas</p>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@el.kumpita.lukas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card"
+          >
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16.5 3c.4 2.4 2.1 4.1 4.5 4.4v3.1c-1.7-.1-3.3-.6-4.5-1.5v6.4a5.5 5.5 0 1 1-4.8-5.4v3.2a2.4 2.4 0 1 0 1.7 2.3V3h3.1z" />
+              </svg>
+            </div>
+            <div class="social-meta">
+              <span class="social-tag">OUTFITS URBANOS</span>
+              <h3>TikTok</h3>
+              <p>@el.kumpita.lukas</p>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card"
+          >
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
+              </svg>
+            </div>
+            <div class="social-meta">
+              <span class="social-tag">COMUNIDAD</span>
+              <h3>Facebook</h3>
+              <p>el.kumpita.lukas · Novedades</p>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand-logo footer-logo">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="44" height="44" rx="8" fill="#0B0F0D" stroke="#22C55E" stroke-width="2" />
+              <path d="M24 37C24.5 29 25.8 23.5 28 18" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" />
+              <path d="M28 18C23.5 14.2 17.2 14.5 13 18.2C17.8 17.5 22.8 18.4 27.6 19.6" fill="#22C55E" />
+              <path d="M28 18C24.5 12.2 29.8 8.5 35.5 10.8C31.2 12.2 29.2 15 28.4 18.4" fill="#22C55E" />
+              <path d="M28 18.2C32.5 15.8 38.2 17.2 40.5 22C36 19.8 31.8 19.5 28 19.6" fill="#16A34A" />
+              <path d="M27.6 18.4C22.2 19.2 17.8 22.4 15.8 26.8C19.6 23.5 23.5 21.4 27.6 20.4" fill="#16A34A" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>el.kumpita.lukas</strong>
+            <small>URBANISMO · PALMERAS · STREETWEAR</small>
+          </span>
+        </div>
+        <p class="footer-copy-note">
+          Interfaz demo interactiva para tienda de ropa urbana en paleta negro, blanco y verde. Número de contacto Bolivia: +591 67992051.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Navegación</h4>
+          <a href="#inicio">Inicio</a>
+          <a href="#catalogo">Catálogo (5 Prendas)</a>
+          <a href="#ubicacion">Croquis de Ubicación</a>
+          <a href="#redes">Redes Sociales</a>
+        </div>
+        <div>
+          <h4>Contacto Directo</h4>
+          <a href="https://wa.me/59167992051" target="_blank" rel="noopener noreferrer">WhatsApp: +591 67992051</a>
+          <a href="https://www.instagram.com/el.kumpita.lukas/" target="_blank" rel="noopener noreferrer">IG: @el.kumpita.lukas</a>
+          <a href="https://www.tiktok.com/@el.kumpita.lukas" target="_blank" rel="noopener noreferrer">TikTok: @el.kumpita.lukas</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 el.kumpita.lukas — Todos los derechos reservados (Demo)</span>
+        <span>BO // +591 67992051</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shopping Cart Slide-Over Drawer -->
+  <div class="cart-backdrop" id="cartBackdrop" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="cart-header">
+      <div>
+        <span class="cart-kicker">TU SELECCIÓN URBANA</span>
+        <h2>Carrito de Compras</h2>
+      </div>
+      <button type="button" class="icon-close-btn" id="closeCartBtn" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <div class="cart-body" id="cartItemsContainer"></div>
+
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-delivery-box">
+        <span class="cart-option-label">Modalidad de entrega</span>
+        <div class="delivery-toggle" role="group" aria-label="Modalidad de entrega">
+          <button type="button" class="delivery-btn active" data-delivery="Recojo en tienda">Recojo en tienda</button>
+          <button type="button" class="delivery-btn" data-delivery="Delivery / Envío">Delivery / Envío</button>
+        </div>
+        <input
+          type="text"
+          id="customerNoteInput"
+          class="cart-note-input"
+          placeholder="Tu nombre o ciudad/zona (opcional)"
+          aria-label="Tu nombre o zona de envío"
+        />
+      </div>
+
+      <div class="cart-summary-row">
+        <span>Total estimado</span>
+        <strong id="cartTotalAmount">0 Bs.</strong>
+      </div>
+
+      <button type="button" class="btn btn-whatsapp btn-block" id="checkoutWhatsappBtn">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.76 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.85 16.12C17.6 16.82 16.41 17.45 15.83 17.53C15.31 17.61 14.66 17.64 13.94 17.41C13.5 17.27 12.93 17.08 12.21 16.77C9.16 15.45 7.17 12.38 7.02 12.18C6.87 11.98 5.78 10.53 5.78 9.04C5.78 7.55 6.56 6.82 6.84 6.51C7.12 6.2 7.45 6.13 7.66 6.13C7.87 6.13 8.07 6.13 8.25 6.14C8.44 6.15 8.7 6.07 8.95 6.68C9.21 7.3 9.83 8.81 9.91 8.97C9.99 9.13 10.04 9.31 9.93 9.51C9.83 9.71 9.78 9.84 9.62 10.02C9.46 10.2 9.29 10.42 9.15 10.56C8.99 10.72 8.83 10.89 9.01 11.21C9.2 11.52 9.83 12.57 10.78 13.41C12 14.5 13.03 14.84 13.34 15C13.66 15.16 13.84 15.13 14.03 14.92C14.21 14.71 14.82 13.99 15.03 13.68C15.24 13.37 15.46 13.42 15.75 13.53C16.05 13.63 17.62 14.41 17.94 14.57C18.25 14.73 18.46 14.81 18.54 14.94C18.61 15.08 18.61 15.72 17.85 16.12Z" />
+        </svg>
+        <span>Finalizar Pedido por WhatsApp</span>
+      </button>
+
+      <div class="cart-secondary-actions">
+        <button type="button" class="btn-text-action" id="copyOrderBtn">Copiar resumen</button>
+        <button type="button" class="btn-text-action danger" id="clearCartBtn">Vaciar carrito</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Quick View Product Modal -->
+  <div class="modal-backdrop" id="productModalBackdrop" hidden>
+    <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="icon-close-btn modal-close" id="closeModalBtn" aria-label="Cerrar detalle">✕</button>
+      <div class="modal-grid" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Button -->
+  <a
+    href="https://wa.me/59167992051?text=Hola%20el.kumpita.lukas!%20Tengo%20una%20consulta%20sobre%20las%20prendas."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="floating-wa"
+    aria-label="Contactar por WhatsApp +591 67992051"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.76 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.85 16.12C17.6 16.82 16.41 17.45 15.83 17.53C15.31 17.61 14.66 17.64 13.94 17.41C13.5 17.27 12.93 17.08 12.21 16.77C9.16 15.45 7.17 12.38 7.02 12.18C6.87 11.98 5.78 10.53 5.78 9.04C5.78 7.55 6.56 6.82 6.84 6.51C7.12 6.2 7.45 6.13 7.66 6.13C7.87 6.13 8.07 6.13 8.25 6.14C8.44 6.15 8.7 6.07 8.95 6.68C9.21 7.3 9.83 8.81 9.91 8.97C9.99 9.13 10.04 9.31 9.93 9.51C9.83 9.71 9.78 9.84 9.62 10.02C9.46 10.2 9.29 10.42 9.15 10.56C8.99 10.72 8.83 10.89 9.01 11.21C9.2 11.52 9.83 12.57 10.78 13.41C12 14.5 13.03 14.84 13.34 15C13.66 15.16 13.84 15.13 14.03 14.92C14.21 14.71 14.82 13.99 15.03 13.68C15.24 13.37 15.46 13.42 15.75 13.53C16.05 13.63 17.62 14.41 17.94 14.57C18.25 14.73 18.46 14.81 18.54 14.94C18.61 15.08 18.61 15.72 17.85 16.12Z" />
+    </svg>
+    <span class="floating-wa-label">WhatsApp 67992051</span>
+  </a>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
